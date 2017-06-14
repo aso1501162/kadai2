@@ -1,0 +1,151 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import model.Subject;
+
+public class SubjectDAO {
+	// データソース
+	DataSource ds = null;
+	// データベース接続情報
+	Connection con = null;
+	// プリコンパイル用のステートメント
+	PreparedStatement stmt = null;
+	// SELECTの結果を格納するResultSet
+	ResultSet rs = null;
+
+	// データベース接続
+	public Connection connection() throws Exception {
+		// データソースがなければ、context.xmlから読み込んで設定する
+		if (ds == null) {
+			ds = (DataSource) (new InitialContext()).lookup("java:comp/env/jdbc/MySQL");
+		}
+		con = ds.getConnection();
+		return con;
+	}
+
+	//	データベース切断
+	public void close() throws Exception {
+		// データベース接続されていれば、切断する
+		if (rs != null) {
+			rs.close();
+		}
+		if (stmt != null) {
+			stmt.close();
+		}
+		if (con != null) {
+			con.close();
+		}
+	}
+	
+	public ArrayList<Subject> getSubjectList() {
+		
+		ArrayList<Subject> subjectList = new ArrayList<Subject>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM subject "
+					+ "INNER JOIN category "
+					+ "ON subject.subject_id = category.category_id ";
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery(); // sql文を実行
+
+			while (rs.next()) {
+				Subject subject = new Subject();
+
+				subject.setSubjectId(rs.getInt("subject_id"));
+				subject.setSubjectName(rs.getString("subject_name"));
+				subject.setCategoryId(rs.getInt("day"));
+				subject.setDay(rs.getString("day"));
+				subject.setCategoryName(rs.getString("category_name"));
+
+				subjectList.add(subject);
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return subjectList;
+	}
+	
+	public ArrayList<Subject> getAttendSubjectList(int studentId) {
+		
+		ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM (subject "
+					+ "INNER JOIN category "
+					+ "ON subject.subject_id = category.category_id) "
+					+ "INNER JOIN attendance "
+					+ "ON subject.subject_id = attendance.subject_id "
+					+ "WHERE student_id = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, studentId);
+			rs = stmt.executeQuery(); // sql文を実行
+
+			while (rs.next()) {
+				Subject subject = new Subject();
+
+				subject.setSubjectId(rs.getInt("subject_id"));
+				subject.setSubjectName(rs.getString("subject_name"));
+				subject.setCategoryId(rs.getInt("day"));
+				subject.setDay(rs.getString("day"));
+				subject.setCategoryName(rs.getString("category_name"));
+
+				attendSubjectList.add(subject);
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return attendSubjectList;
+	}
+
+	// 申込科目登録
+	public void insertAttendSubject(String userId, int day, String content) {
+		try {
+			// DB接続
+			connection();
+			// SQL文設定の準備・SQL文の実行
+			String sql = "INSERT INTO attendance VALUES(?,?,?)";
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, userId);
+			stmt.setInt(2, day);
+			stmt.setString(3, content);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+}
