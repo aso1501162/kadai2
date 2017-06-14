@@ -6,7 +6,7 @@ public class Teacher implements Serializable {
 	private int teacherId;
 	private String teacherName;
 	private String password;
-	
+
 	public Teacher(){}
 
 	public int getTeacherId() {
@@ -32,5 +32,5 @@ public class Teacher implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 }
