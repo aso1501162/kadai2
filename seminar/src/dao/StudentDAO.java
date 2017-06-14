@@ -42,7 +42,7 @@ public class StudentDAO {
 			con.close();
 		}
 	}
-	
+
 	// 学生情報の取得
 	public Student getStudent(String studentId, String password) {
 		Student student = new Student();
@@ -50,7 +50,7 @@ public class StudentDAO {
 		try {
 			// DB接続
 			connection();
-			
+
 			// SQL文設定の準備・SQL文の実行
 			String sql = "SELECT * FROM student WHERE student_id=? AND password=?";
 			stmt = con.prepareStatement(sql);
@@ -81,14 +81,14 @@ public class StudentDAO {
 		}
 		return student;
 	}
-	
+
 	// クラス名の取得
 		public String getClassName(int classId) {
 			String className = "";
 			try {
 				// DB接続
 				connection();
-				
+
 				// SQL文設定の準備・SQL文の実行
 				String sql = "SELECT * FROM class WHERE class_id=?";
 				stmt = con.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class StudentDAO {
 				//	DBから取得したデータをuserオブジェクトに格納
 				className = rs.getString("name");
 			} catch (Exception e) {
-				
+
 			} finally {
 				try {
 					close();
@@ -112,5 +112,5 @@ public class StudentDAO {
 			}
 			return className;
 		}
-	
+
 }
