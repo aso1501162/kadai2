@@ -20,7 +20,7 @@
 
 	<h2 class="center">学生ログイン</h2>
 
-	<form method="post" action="<%= request.getContextPath() %>/Login" class="form-horizontal">
+	<form method="post" action="Login" class="form-horizontal">
 		<div class="login form-group">
 			<label class="col-sm-2 control-label" for="InputId">学生ID</label>
 			<div class="col-sm-10">
