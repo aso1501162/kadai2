@@ -31,6 +31,7 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Login.javaを通った");
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 
