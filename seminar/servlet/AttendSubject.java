@@ -44,7 +44,7 @@ public class AttendSubject extends HttpServlet {
 			subjectDAO.insertAttendSubject(studentId,subjectId);
 			break;
 		case"変更":
-			subjectDAO.UpdateAttendSubject(studentId,subjectId);
+			subjectDAO.updateAttendSubject(studentId,subjectId);
 
 			break;
 		case"削除":
