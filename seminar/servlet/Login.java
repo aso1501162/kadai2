@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
 
 		//学生ログイン
 		String password=request.getParameter("password");
-		if(request.getParameter("studentid")!=null){
+		if(request.getParameter("studentId")!=null){
 
 			String studentid = request.getParameter("studentid");
 
@@ -61,6 +61,9 @@ public class Login extends HttpServlet {
 			session.setAttribute("student", student);
 			session.setAttribute("attendSubjectList", attendSubjectList);
 			request.setAttribute("subjectList", subjectList);
+
+
+
 
 			//遷移先の宣言
 			Path="xxxxxxxxxx.jsp";
