@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
 
 		//学生ログイン
 		String password=request.getParameter("password");
-		if(request.getParameter("studentId")!=null){
+		if(request.getParameter("studentid")!=null){
 
 			String studentid = request.getParameter("studentid");
 
