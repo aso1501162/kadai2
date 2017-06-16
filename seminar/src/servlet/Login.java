@@ -62,6 +62,9 @@ public class Login extends HttpServlet {
 			session.setAttribute("attendSubjectList", attendSubjectList);
 			request.setAttribute("subjectList", subjectList);
 
+
+
+
 			//遷移先の宣言
 			Path="xxxxxxxxxx.jsp";
 		}
