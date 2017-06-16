@@ -41,6 +41,7 @@ public class AttendSubject extends HttpServlet {
 		//申込、変更、削除の処理
 		switch(request.getParameter("xxx")){
 		case"申込":
+<<<<<<< HEAD
 			subjectDAO.insertattendSubject(studentId,subjectId);
 
 			break;
@@ -50,6 +51,17 @@ public class AttendSubject extends HttpServlet {
 			break;*/
 		case"削除":
 			subjectDAO.deleteattendSubject(studentId,subjectId);
+=======
+			subjectDAO.insertAttendSubject(studentId,subjectId);
+
+			break;
+		/*case"変更":
+			subjectDAO.UpdateattendSubject(studentId,subjectId);
+
+			break;*/
+		case"削除":
+			subjectDAO.deleteAttendSubject(studentId,subjectId);
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 
 			break;
 		default:
