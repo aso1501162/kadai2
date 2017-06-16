@@ -33,7 +33,7 @@ public class AttendSubject extends HttpServlet {
 		int studentId = student.getStudentId();
 
 		//科目を取得
-		String subjectId=request.getParameter("subjectid");
+		int subjectId=Integer.parseInt(request.getParameter("subjectid"));
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
