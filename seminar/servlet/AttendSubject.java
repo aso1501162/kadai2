@@ -33,7 +33,7 @@ public class AttendSubject extends HttpServlet {
 		int studentId = student.getStudentId();
 
 		//科目を取得
-		String subjectId=request.getParameter("subjectid");
+		int subjectId=Integer.parseInt(request.getParameter("subjectid"));
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -42,12 +42,11 @@ public class AttendSubject extends HttpServlet {
 		switch(request.getParameter("xxx")){
 		case"申込":
 			subjectDAO.insertAttendSubject(studentId,subjectId);
+			break;
+		case"変更":
+			subjectDAO.updateAttendSubject(studentId,subjectId);
 
 			break;
-		/*case"変更":
-			subjectDAO.UpdateattendSubject(studentId,subjectId);
-
-			break;*/
 		case"削除":
 			subjectDAO.deleteAttendSubject(studentId,subjectId);
 

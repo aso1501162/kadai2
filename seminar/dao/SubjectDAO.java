@@ -57,7 +57,9 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id ";
+					+ "ON subject.subject_id = category.category_id "
+					+ "INNER JOIN teacher "
+					+ "ON subject.teacher_id = teacher.teacher_id ";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 
@@ -69,6 +71,8 @@ public class SubjectDAO {
 				subject.setCategoryId(rs.getInt("day"));
 				subject.setDay(rs.getString("day"));
 				subject.setCategoryName(rs.getString("category_name"));
+				subject.setTeacherId(rs.getInt("teacher_id"));
+				subject.setTeacherName(rs.getString("teacher_name"));
 
 				subjectList.add(subject);
 			}
@@ -99,6 +103,8 @@ public class SubjectDAO {
 					+ "ON subject.subject_id = category.category_id) "
 					+ "INNER JOIN attendance "
 					+ "ON subject.subject_id = attendance.subject_id "
+					+ "INNER JOIN teacher "
+					+ "ON subject.teacher_id = teacher.teacher_id "
 					+ "WHERE student_id = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
@@ -112,6 +118,8 @@ public class SubjectDAO {
 				subject.setCategoryId(rs.getInt("day"));
 				subject.setDay(rs.getString("day"));
 				subject.setCategoryName(rs.getString("category_name"));
+				subject.setTeacherId(rs.getInt("teacher_id"));
+				subject.setTeacherName(rs.getString("teacher_name"));
 
 				attendSubjectList.add(subject);
 			}
@@ -127,16 +135,15 @@ public class SubjectDAO {
 	}
 
 	// 申込科目登録
-	public void insertAttendSubject(String userId, int day, String content) {
+	public void insertAttendSubject(int studentId, int subjectId) {
 		try {
 			// DB接続
 			connection();
 			// SQL文設定の準備・SQL文の実行
-			String sql = "INSERT INTO attendance VALUES(?,?,?)";
+			String sql = "INSERT INTO attendance VALUES(?,?)";
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1, userId);
-			stmt.setInt(2, day);
-			stmt.setString(3, content);
+			stmt.setInt(1, studentId);
+			stmt.setInt(2, subjectId);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 

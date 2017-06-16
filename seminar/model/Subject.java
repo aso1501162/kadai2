@@ -8,8 +8,10 @@ public class Subject implements Serializable {
 	private int categoryId;
 	private String day;
 	private String categoryName;
+	private int teacherId;
+	private String teacherName;
 	
-
+	
 	public Subject(){}
 
 	public int getSubjectId() {
@@ -50,6 +52,22 @@ public class Subject implements Serializable {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	
+	public int getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
 	}
 
 }
