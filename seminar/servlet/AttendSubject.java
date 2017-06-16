@@ -41,7 +41,7 @@ public class AttendSubject extends HttpServlet {
 		//申込、変更、削除の処理
 		switch(request.getParameter("xxx")){
 		case"申込":
-			subjectDAO.insertattendSubject(studentId,subjectId);
+			subjectDAO.insertAttendSubject(studentId,subjectId);
 
 			break;
 		/*case"変更":
@@ -49,7 +49,7 @@ public class AttendSubject extends HttpServlet {
 
 			break;*/
 		case"削除":
-			subjectDAO.deleteattendSubject(studentId,subjectId);
+			subjectDAO.deleteAttendSubject(studentId,subjectId);
 
 			break;
 		default:
