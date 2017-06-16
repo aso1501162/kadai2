@@ -44,6 +44,7 @@ public class SubjectDAO {
 		}
 	}
 	
+	//	科目リスト取得
 	public ArrayList<Subject> getSubjectList() {
 		
 		ArrayList<Subject> subjectList = new ArrayList<Subject>();
@@ -68,7 +69,7 @@ public class SubjectDAO {
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
-				subject.setCategoryId(rs.getInt("day"));
+				subject.setCategoryId(rs.getInt("category_id"));
 				subject.setDay(rs.getString("day"));
 				subject.setCategoryName(rs.getString("category_name"));
 				subject.setTeacherId(rs.getInt("teacher_id"));
@@ -87,6 +88,22 @@ public class SubjectDAO {
 		return subjectList;
 	}
 	
+	//	科目登録
+	public void insertSubject(String subjectId, String subjectName, String categoryId, String day, String teacherId){
+		
+	}
+	
+	//	科目更新
+	public void updateSubject(String subjectId, String subjectName, String categoryId, String day, String teacherId){
+		
+	}
+	
+	//	科目削除
+	public void deleteSubject(String subjectId){
+		
+	}
+	
+	//	申込科目リスト取得
 	public ArrayList<Subject> getAttendSubjectList(int studentId) {
 		
 		ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
@@ -115,7 +132,7 @@ public class SubjectDAO {
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
-				subject.setCategoryId(rs.getInt("day"));
+				subject.setCategoryId(rs.getInt("category_id"));
 				subject.setDay(rs.getString("day"));
 				subject.setCategoryName(rs.getString("category_name"));
 				subject.setTeacherId(rs.getInt("teacher_id"));
@@ -154,5 +171,15 @@ public class SubjectDAO {
 
 			}
 		}
+	}
+	
+	//	申込科目更新
+	public void updateAttendSubject(int studentId,int subjectId){
+		
+	}
+	
+	//	申込科目削除
+	public void deleteAttendSubject(int studentId,int subjectId){
+		
 	}
 }

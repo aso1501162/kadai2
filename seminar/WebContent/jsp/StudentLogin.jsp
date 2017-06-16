@@ -18,8 +18,8 @@
 	<article>
 	
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="StudentLogin.jsp">学生ログイン</a></li>
-		<li><a href="TeacherLogin.jsp">管理者ログイン</a></li>
+		<li class="active"><a href="ToggleLoginPage?page=student">学生ログイン</a></li>
+		<li><a href="ToggleLoginPage?page=teacher">管理者ログイン</a></li>
 	</ul>
 
 	<h2 class="center">学生ログイン</h2>
@@ -28,7 +28,7 @@
 		<div class="login form-group">
 			<label class="col-sm-2 control-label" for="InputId"><i class="material-icons md-24">account_box</i></label>
 			<div class="col-sm-10">
-				<input type="text" name="id" class="form-control" /><br>
+				<input type="text" name="studentid" class="form-control" /><br>
 			</div>
 		</div>
 		

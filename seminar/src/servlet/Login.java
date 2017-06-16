@@ -32,11 +32,12 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Login.javaを通った");
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		System.out.println("studentid： " + request.getParameter("studentid"));
+		System.out.println("teacherid： " + request.getParameter("teacherid"));
+		System.out.println("password： " + request.getParameter("password"));
 
 		HttpSession session=request.getSession();
-		String Path = null;
+		String path = "";
 
 		//学生ログイン
 		String password=request.getParameter("password");
@@ -67,7 +68,7 @@ public class Login extends HttpServlet {
 
 
 			//遷移先の宣言
-			Path="xxxxxxxxxx.jsp";
+			path="StudentRegister.jsp";
 		}
 		//管理者ログイン
 		if(request.getParameter("teacherid")!=null){
@@ -89,10 +90,10 @@ public class Login extends HttpServlet {
 			request.setAttribute("subjectList", subjectList);
 
 			//遷移先の宣言
-			Path="xxxxxxxxxx.jsp";
+			path="TeacherRegister.jsp";
 		}
 		RequestDispatcher rd=
-				request.getRequestDispatcher(Path);
+				request.getRequestDispatcher(path);
 				rd.forward(request,response);
 
 	}
