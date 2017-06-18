@@ -8,11 +8,13 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>ゼミ受講システム-受講登録-</title>
-<link href="bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
+	<jsp:include page="header.jsp" />
+	<br>
 	<div class="text">
 	
 	<h4>申込済み</h4>

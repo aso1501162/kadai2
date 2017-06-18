@@ -38,6 +38,13 @@
 				<input type="password" name="password" class="form-control" /><br>
 		</div>
 		</div>
+		
+		<div class="form-group">
+		<div class="col-sm-12 text-danger text-center">
+			<c:out value="${errorMessage}" />
+		</div>
+		</div>
+		
 		<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<dl class="loginbtn">

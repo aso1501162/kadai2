@@ -52,7 +52,7 @@ public class TeacherDAO {
 			connection();
 			
 			// SQL文設定の準備・SQL文の実行
-			String sql = "SELECT * FROM teacher WHERE student_id=? AND password=?";
+			String sql = "SELECT * FROM teacher WHERE teacher_id=? AND password=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, Integer.parseInt(teacherId));
 			stmt.setString(2, password);
@@ -63,8 +63,8 @@ public class TeacherDAO {
 			rs.next();
 
 			//	DBから取得したデータをuserオブジェクトに格納
-			teacher.setTeacherId(rs.getInt("id"));
-			teacher.setTeacherName(rs.getString("name"));
+			teacher.setTeacherId(rs.getInt("teacher_id"));
+			teacher.setTeacherName(rs.getString("teacher_name"));
 			teacher.setPassword(rs.getString("password"));
 
 		} catch (Exception e) {
