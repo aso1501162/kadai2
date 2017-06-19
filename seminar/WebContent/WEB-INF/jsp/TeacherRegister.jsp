@@ -35,10 +35,10 @@
 						type="radio" class="radio" />火曜 <input name="Radio1" type="radio"
 						class="radio" />木曜 <br>
 					<dl class="submit">
-						<input name="submit" type="submit" value="登録"
-							class="btn btn-default" />
-						<input name="reset" type="reset" value="取消"
-							class="btn btn-default" />
+						<button type="submit" name="action" value="delete" class="btn btn-default">登録</button>
+						<button type="reset" class="btn btn-default">取消</button>
+						<input name="submit" type="submit" value="登録" class="btn btn-default" />
+						<input name="reset" type="reset" value="取消" class="btn btn-default" />
 					</dl>
 				</div>
 			</form>
