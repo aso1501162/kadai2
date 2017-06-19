@@ -38,6 +38,10 @@ public class Login extends HttpServlet {
 		System.out.println("password： " + request.getParameter("password"));
 
 		HttpSession session=request.getSession();
+		if (session != null) {
+			session.invalidate();
+			session=request.getSession();
+		}
 		String path = "";
 
 		//学生ログイン
@@ -62,8 +66,8 @@ public class Login extends HttpServlet {
 
 				//全科目Listの宣言
 				List<Subject> subjectList = new ArrayList<Subject>();
-				subjectList = subjectDAO.getSubjectList();
-
+				subjectList = subjectDAO.getSubjectList();				
+				
 				//生徒名、受講科目List、全科目Listのデータセット
 				session.setAttribute("loginStudent", student);
 				session.setAttribute("attendSubjectList", attendSubjectList);
