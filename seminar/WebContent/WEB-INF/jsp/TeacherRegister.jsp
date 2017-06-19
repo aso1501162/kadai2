@@ -17,6 +17,8 @@
 </head>
 
 <body>
+<jsp:include page="header.jsp" />
+<br>
 <div class="text">
 
 <h4>科目登録</h4>
