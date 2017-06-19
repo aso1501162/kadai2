@@ -47,30 +47,52 @@
 				</div>
 			</form>
 
-			<h4>科目一覧</h4>
 
-			<table class="table table-bordered">
-				<thead>
-					<tr class="active">
-						<th>科目ID</th>
-						<th>分類名</th>
-						<th>科目名</th>
-						<th>教師名</th>
-						<th width="7%">一覧</th>
-						<th width="7%">削除</th>
-					</tr>
-				</thead>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td><input name="Button1" type="button" value="一覧"
-						class="btn btn-default btn-xs" /></td>
-					<td><input name="Button2" type="button" value="削除"
-						class="btn btn-default btn-xs" /></td>
-				</tr>
-			</table>
+<h4>科目一覧</h4>
+<h5>火 曜</h5>
+<table class="table table-bordered">
+<thead>
+	<tr class="active">
+		<th>科目ID</th>
+		<th>分類名</th>
+		<th>科目名</th>
+		<th>教師名</th>
+		<th width="7%">一覧</th>
+		<th width="7%">削除</th>
+	</tr>
+	</thead>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs"/></td>
+		<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs"/></td>
+	</tr>
+</table>
+<br>
+<h5>木 曜</h5>
+<table class="table table-bordered">
+<thead>
+	<tr class="active">
+		<th>科目ID</th>
+		<th>分類名</th>
+		<th>科目名</th>
+		<th>教師名</th>
+		<th width="7%">一覧</th>
+		<th width="7%">削除</th>
+	</tr>
+	</thead>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs"/></td>
+		<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs"/></td>
+	</tr>
+</table>
+
 		</div>
 	</div>
 </body>

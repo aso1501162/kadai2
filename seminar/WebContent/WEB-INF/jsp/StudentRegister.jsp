@@ -3,9 +3,9 @@
 <%@ include file="/jsp/common.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/jsp/common.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/jsp/common.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -43,14 +43,14 @@
 			</table>
 			<br>
 			<h4>科目一覧</h4>
+			<h5>火 曜</h5>
 			<table class="table table-bordered">
 				<tr class="active">
 					<th width="10%">科目ID</th>
 					<th width="15%">分類名</th>
 					<th width="35%">科目名</th>
 					<th width="25%">教師名</th>
-					<th width="7%">火曜</th>
-					<th width="7%">木曜</th>
+					<th width="7%">申込</th>
 				</tr>
 				<tr>
 					<td></td>
@@ -58,9 +58,28 @@
 					<td></td>
 					<td></td>
 					<td><input type="radio" name="tue" /></td>
-					<td><input type="radio" name="thu" /></td>
 				</tr>
 			</table>
+			<br>
+			<h5>木 曜</h5>
+			<table class="table table-bordered">
+				<tr class="active">
+					<th width="10%">科目ID</th>
+					<th width="15%">分類名</th>
+					<th width="35%">科目名</th>
+					<th width="25%">教師名</th>
+					<th width="7%">申込</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><input type="radio" name="tue" /></td>
+				</tr>
+			</table>
+
+
 			<p class="right">
 				<input type="submit" value="確定" class="btn btn-default" />
 			</p>
