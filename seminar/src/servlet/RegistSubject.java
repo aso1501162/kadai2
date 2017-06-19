@@ -25,7 +25,11 @@ public class RegistSubject extends HttpServlet {
 		//doGet(request, response);
 
 		//科目を取得
-		String subject=request.getParameter("xxx");
+		String subjectId = request.getParameter("xxx");
+		String subjectName = request.getParameter("xxx");
+		String categoryId = request.getParameter("xxx");
+		String day = request.getParameter("xxx");
+		String teacherId = request.getParameter("xxx");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -33,15 +37,15 @@ public class RegistSubject extends HttpServlet {
 		//申込、変更、削除の処理
 		switch(request.getParameter("xxx")){
 		case"登録":
-			subjectDAO.registSubject(subject);
+			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 
 			break;
 		case"変更":
-			subjectDAO.updateSubject(subject);
+			subjectDAO.updateSubject(subjectId, subjectName, categoryId, day, teacherId);
 
 			break;
 		case"削除":
-			subjectDAO.deleteSubject(subject);
+			subjectDAO.deleteSubject(subjectId);
 
 			break;
 		default:

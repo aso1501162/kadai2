@@ -63,8 +63,8 @@ public class StudentDAO {
 			rs.next();
 
 			//	DBから取得したデータをuserオブジェクトに格納
-			student.setStudentId(rs.getInt("id"));
-			student.setStudentName(rs.getString("name"));
+			student.setStudentId(rs.getInt("student_id"));
+			student.setStudentName(rs.getString("student_name"));
 			student.setPassword(rs.getString("password"));
 			student.setClassId(rs.getInt("class_id"));
 			student.setClassName(getClassName(rs.getInt("class_id")));

@@ -7,7 +7,7 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>ゼミ受講システム-学生ログイン-</title>
+<title>ゼミ受講システム-管理者ログイン-</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -18,17 +18,17 @@
 	<article>
 	
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="ToggleLoginPage?page=student">学生ログイン</a></li>
-		<li><a href="ToggleLoginPage?page=teacher">管理者ログイン</a></li>
+		<li><a href="ToggleLoginPage?page=student">学生ログイン</a></li>
+		<li class="active"><a href="ToggleLoginPage?page=teacher">管理者ログイン</a></li>
 	</ul>
 
-	<h2 class="center">学生ログイン</h2>
-	
+	<h2 class="center">管理者ログイン</h2>
+		
 	<form method="post" action="Login" class="form-horizontal">
 		<div class="login form-group">
 			<label class="col-sm-2 control-label" for="InputId"><i class="material-icons md-24">account_box</i></label>
 			<div class="col-sm-10">
-				<input type="text" name="studentid" class="form-control" /><br>
+				<input type="text" name="teacherid" class="form-control" /><br>
 			</div>
 		</div>
 		
