@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
 	<jsp:include page="header.jsp" />
 	<br>
 	<div class="text">
-	
+
 	<h4>申込済み</h4>
 	<form method="post" action="">
 		<table class="table table-bordered">
