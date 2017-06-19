@@ -16,8 +16,11 @@
 
 <body>
 
-<div id="header" class="col-sm-10 text-right">
-	<i class="material-icons md-24">account_box</i>&nbsp;<c:out value="${loginStudent.studentName}" />　　　ログアウト
+<div id="header" class="col-sm-offset-2 col-sm-8" >
+<div style="float:left;">
+	<i class="material-icons md-24">account_box</i>&nbsp;<c:out value="${loginStudent.studentName}" />
+</div>
+<div style="float:right;">ログアウト</div>
 </div>
 
 </body>
