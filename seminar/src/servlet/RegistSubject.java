@@ -40,10 +40,7 @@ public class RegistSubject extends HttpServlet {
 			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 
 			break;
-		case"変更":
-			subjectDAO.updateSubject(subjectId, subjectName, categoryId, day, teacherId);
 
-			break;
 		case"削除":
 			subjectDAO.deleteSubject(subjectId);
 
