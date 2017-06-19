@@ -17,10 +17,6 @@
 </head>
 
 <body>
-
-	<jsp:include page="header.jsp" />
-	<div class="text">
-		=======
 		<jsp:include page="header.jsp" />
 		<br>
 		<div class="text">
@@ -95,9 +91,7 @@
 					<td><input name="Button2" type="button" value="削除"
 						class="btn btn-default btn-xs" /></td>
 				</tr>
-			</table>
-
-		</div>
+	</table>
 	</div>
 </body>
 

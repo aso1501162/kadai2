@@ -14,14 +14,7 @@
 </head>
 
 <body>
-	<div id="header" class="col-sm-offset-2 col-sm-8">
-		<div style="float: left;">
-			<i class="material-icons md-24">account_box</i>&nbsp;
-			<c:out value="${loginStudent.studentName}" />
-		</div>
-		<div style="float: right;">ログアウト</div>
-	</div>
-=======
+
 <div id="header" class="col-sm-offset-2 col-sm-8" >
 
 <div style="float:left;">
