@@ -24,11 +24,11 @@
 
 <form class="form-inline" id="subject" action="" method="post" >
   <div class="form-group">
-    
-<input name="subject_id" type="text" placeholder="科目ID" class="form-control"/> 
+
+<input name="subject_id" type="text" placeholder="科目ID" class="form-control"/>
 <input name="subject_name" type="text" placeholder="科目名" class="form-control"/>
 <input name="teacher_name" type="text" placeholder="教師名" class="form-control"/>&nbsp;&nbsp;&nbsp;
-曜日　<input name="Radio1" type="radio" class="radio" />火曜　<input name="Radio1" type="radio" class="radio" />木曜 
+曜日　<input name="Radio1" type="radio" class="radio" />火曜　<input name="Radio1" type="radio" class="radio" />木曜
 	  <br>
 	<dl class="submit">
 		<input name="submit" type="submit" value="登録" class="btn btn-default"/> <input name="reset" type="reset" value="取消" class="btn btn-default" />　　　

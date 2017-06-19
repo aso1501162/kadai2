@@ -17,7 +17,7 @@
 	<jsp:include page="header.jsp" />
 	<br>
 	<div class="text">
-	
+
 	<h4>申込済み</h4>
 	<form method="post" action="">
 		<table class="table table-bordered">
