@@ -20,7 +20,9 @@
 <div style="float:left;">
 	<i class="material-icons md-24">account_box</i>&nbsp;<c:out value="${loginStudent.studentName}" />
 </div>
-<div style="float:right;">ログアウト</div>
+<div style="float:right;">
+ログアウト
+</div>
 </div>
 
 </body>
