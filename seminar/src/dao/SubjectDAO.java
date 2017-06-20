@@ -44,10 +44,10 @@ public class SubjectDAO {
 		}
 	}
 	
-	//	科目リスト取得
-	public ArrayList<Subject> getSubjectList() {
+	//	火曜日の科目リスト取得
+	public ArrayList<Subject> getTuesdaySubjectList() {
 		
-		ArrayList<Subject> subjectList = new ArrayList<Subject>();
+		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		
 		try {
 			// DB接続
@@ -58,14 +58,17 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id "
+					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
-					+ "ON subject.teacher_id = teacher.teacher_id ";
+					+ "ON subject.teacher_id = teacher.teacher_id "
+					+ "WHERE day = '火'";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
-
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
+				
+				System.out.println("火曜日の科目："+rs.getInt("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -75,7 +78,7 @@ public class SubjectDAO {
 				subject.setTeacherId(rs.getInt("teacher_id"));
 				subject.setTeacherName(rs.getString("teacher_name"));
 
-				subjectList.add(subject);
+				tuesdaySubjectList.add(subject);
 			}
 		} catch (Exception e) {
 		} finally {
@@ -85,7 +88,54 @@ public class SubjectDAO {
 
 			}
 		}
-		return subjectList;
+		return tuesdaySubjectList;
+	}
+	
+//	木曜日の科目リスト取得
+	public ArrayList<Subject> getThursdaySubjectList() {
+		
+		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM subject "
+					+ "INNER JOIN category "
+					+ "ON subject.category_id = category.category_id "
+					+ "INNER JOIN teacher "
+					+ "ON subject.teacher_id = teacher.teacher_id "
+					+ "WHERE day = '木'";
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery(); // sql文を実行
+			
+			while (rs.next()) {
+				Subject subject = new Subject();
+				
+				System.out.println("木曜日の科目："+rs.getInt("subject_name") + "を取得");
+
+				subject.setSubjectId(rs.getInt("subject_id"));
+				subject.setSubjectName(rs.getString("subject_name"));
+				subject.setCategoryId(rs.getInt("category_id"));
+				subject.setDay(rs.getString("day"));
+				subject.setCategoryName(rs.getString("category_name"));
+				subject.setTeacherId(rs.getInt("teacher_id"));
+				subject.setTeacherName(rs.getString("teacher_name"));
+
+				thursdaySubjectList.add(subject);
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return thursdaySubjectList;
 	}
 	
 	//	科目登録
@@ -117,7 +167,7 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM (subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id) "
+					+ "ON subject.category_id = category.category_id) "
 					+ "INNER JOIN attendance "
 					+ "ON subject.subject_id = attendance.subject_id "
 					+ "INNER JOIN teacher "
@@ -126,9 +176,11 @@ public class SubjectDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			rs = stmt.executeQuery(); // sql文を実行
-
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
+				
+				System.out.println("学生の申込科目："+rs.getInt("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
