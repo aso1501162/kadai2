@@ -54,25 +54,29 @@ public class Login extends HttpServlet {
 			StudentDAO studentDAO = new StudentDAO();
 
 			Student student=studentDAO.getStudent(studentid,password);
-			
+
 			if (student != null) {
 				System.out.println("ログイン成功： " + student.getStudentName());
-				
+
 				SubjectDAO subjectDAO = new SubjectDAO();
-				
+
 				//受講科目Listの宣言
 				List<Subject> attendSubjectList = new ArrayList<Subject>();
 				attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
 
-				//全科目Listの宣言
-				List<Subject> subjectList = new ArrayList<Subject>();
-				subjectList = subjectDAO.getSubjectList();				
-				
+				//全科目Listの宣言(火曜、木曜)
+				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
+				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
 				//生徒名、受講科目List、全科目Listのデータセット
 				session.setAttribute("loginStudent", student);
 				session.setAttribute("attendSubjectList", attendSubjectList);
-				request.setAttribute("subjectList", subjectList);
-				
+				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
+				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+
+
 				//遷移先の宣言
 				path="WEB-INF/jsp/StudentRegister.jsp";
 			} else {
@@ -81,7 +85,7 @@ public class Login extends HttpServlet {
 				//遷移先の宣言
 				path="jsp/StudentLogin.jsp";
 			}
-			
+
 		}
 		//管理者ログイン
 		if(request.getParameter("teacherid")!=null){
@@ -90,21 +94,24 @@ public class Login extends HttpServlet {
 
 			//DAOのインスタンス化
 			TeacherDAO tDAO=new TeacherDAO();
-			
+
 			Teacher teacher=tDAO.getTeacher(teacherid,password);
-			
+
 			if (teacher != null) {
 				System.out.println("ログイン成功： " + teacher.getTeacherName());
-				
+
 				SubjectDAO subjectDAO = new SubjectDAO();
-				
-				//全科目Listの宣言
-				List<Subject> subjectList = new ArrayList<Subject>();
-				subjectList = subjectDAO.getSubjectList();
+
+				//全科目Listの宣言(火曜、木曜)
+				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
+				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 
 				//管理者名、全科目Listのデータセット
 				session.setAttribute("loginTeacher", teacher);
-				request.setAttribute("subjectList", subjectList);
+				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
+				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
 
 				//遷移先の宣言
 				path="WEB-INF/jsp/TeacherRegister.jsp";
@@ -115,7 +122,7 @@ public class Login extends HttpServlet {
 				path="jsp/TeacherLogin.jsp";
 			}
 		}
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
 
