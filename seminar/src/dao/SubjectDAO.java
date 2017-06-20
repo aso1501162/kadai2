@@ -67,6 +67,8 @@ public class SubjectDAO {
 
 			while (rs.next()) {
 				Subject subject = new Subject();
+				
+				System.out.println("火曜日の科目："+rs.getInt("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -112,6 +114,8 @@ public class SubjectDAO {
 
 			while (rs.next()) {
 				Subject subject = new Subject();
+				
+				System.out.println("木曜日の科目："+rs.getInt("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -175,6 +179,8 @@ public class SubjectDAO {
 
 			while (rs.next()) {
 				Subject subject = new Subject();
+				
+				System.out.println("学生の申込科目："+rs.getInt("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
