@@ -58,13 +58,13 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id "
+					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
 					+ "WHERE day = '火'";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
-
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
@@ -105,13 +105,13 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id "
+					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
 					+ "WHERE day = '木'";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
-
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
@@ -167,7 +167,7 @@ public class SubjectDAO {
 					"SELECT * "
 					+ "FROM (subject "
 					+ "INNER JOIN category "
-					+ "ON subject.subject_id = category.category_id) "
+					+ "ON subject.category_id = category.category_id) "
 					+ "INNER JOIN attendance "
 					+ "ON subject.subject_id = attendance.subject_id "
 					+ "INNER JOIN teacher "
@@ -176,7 +176,7 @@ public class SubjectDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			rs = stmt.executeQuery(); // sql文を実行
-
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
