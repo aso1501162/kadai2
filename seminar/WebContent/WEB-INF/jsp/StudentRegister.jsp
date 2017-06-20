@@ -7,10 +7,10 @@
 <html>
 
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>ゼミ受講システム-受講登録-</title>
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>ゼミ受講システム-受講登録-</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -28,17 +28,30 @@
 					<th width="25%">教師名</th>
 					<th>削除</th>
 				</tr>
+
+				<c:if test="">
+					<tr>
+						<td><c:out value="${subjectView.day}" /></td>
+						<td><c:out value="${subjectView.categoryName}" /></td>
+						<td><c:out value="${subjectView.subjectName}" /></td>
+						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+					</tr>
+				</c:if>
+
 				<tr>
 					<td style="width: 109px"></td>
 					<td style="width: 231px"></td>
 					<td style="width: 363px"></td>
 					<td style="width: 285px"></td>
-					<td><input type="submit" value="削除"
-						class="btn btn-default btn-xs" /></td>
+					<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
 				</tr>
 			</table>
+
 			<br>
+
 			<h4>科目一覧</h4>
+
 			<h5>火 曜</h5>
 			<table class="table table-bordered">
 				<tr class="active">
@@ -48,15 +61,21 @@
 					<th width="25%">教師名</th>
 					<th width="7%">申込</th>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><input type="radio" name="tue" /></td>
-				</tr>
+
+				<c:forEach var="subjectView" items="${subjectListTue}">
+					<tr>
+						<td><c:out value="${subjectView.subjectId}" /></td>
+						<td><c:out value="${subjectView.categoryName}" /></td>
+						<td><c:out value="${subjectView.subjectName}" /></td>
+						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><input type="radio" name="tue" /></td>
+						<td><input type="radio" name="thu" /></td>
+					</tr>
+				</c:forEach>
 			</table>
+
 			<br>
+
 			<h5>木 曜</h5>
 			<table class="table table-bordered">
 				<tr class="active">
@@ -66,13 +85,17 @@
 					<th width="25%">教師名</th>
 					<th width="7%">申込</th>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><input type="radio" name="tue" /></td>
-				</tr>
+
+				<c:forEach var="subjectView" items="${subjectListThu}">
+					<tr>
+						<td><c:out value="${subjectView.subjectId}" /></td>
+						<td><c:out value="${subjectView.categoryId}" /></td>
+						<td><c:out value="${subjectView.subjectName}" /></td>
+						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><input type="radio" name="tue" /></td>
+						<td><input type="radio" name="thu" /></td>
+					</tr>
+				</c:forEach>
 			</table>
 
 
