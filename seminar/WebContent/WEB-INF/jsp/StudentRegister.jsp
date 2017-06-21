@@ -57,7 +57,7 @@
 					<th width="7%">申込</th>
 				</tr>
 
-				<c:forEach var="tueSub" items="${tuesdaySubjectLost}">
+				<c:forEach var="tueSub" items="${tuesdaySubjectList}">
 					<tr>
 						<td><c:out value="${tueSub.subjectId}" /></td>
 						<td><c:out value="${tueSub.categoryName}" /></td>
