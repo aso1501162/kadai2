@@ -37,18 +37,10 @@
 							<td><c:out value="${attend.categoryName}" /></td>
 							<td><c:out value="${attend.subjectName}" /></td>
 							<td><c:out value="${attend.teacherName}" /></td>
-							<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+							<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 						</tr>
 					</c:forEach>
 				</c:if>
-
-				<tr>
-					<td style="width: 109px"></td>
-					<td style="width: 231px"></td>
-					<td style="width: 363px"></td>
-					<td style="width: 285px"></td>
-					<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
-				</tr>
 			</table>
 
 			<br>

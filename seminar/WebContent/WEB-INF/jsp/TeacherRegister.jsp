@@ -14,6 +14,7 @@
 </head>
 
 <body>
+
 	<jsp:include page="header.jsp" />
 	<br>
 	<div class="text">
@@ -58,8 +59,8 @@
 			<td><c:out value="${tueSub.categoryId}" /></td>
 			<td><c:out value="${tueSub.subjectName}" /></td>
 			<td><c:out value="${tueSub.teacherName}" /></td>
-			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
-			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
+			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
+			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
@@ -86,13 +87,13 @@
 			<td><c:out value="${thuSub.categoryId}" /></td>
 			<td><c:out value="${thuSub.subjectName}" /></td>
 			<td><c:out value="${thuSub.teacherName}" /></td>
-			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
-			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
 			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
 			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
+
+</div>
 
 </body>
 
