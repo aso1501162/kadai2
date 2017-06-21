@@ -61,14 +61,17 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = '火'";
+					+ "WHERE day = ?";
 			stmt = con.prepareStatement(sql);
+			stmt.setString(1, "火");
 			rs = stmt.executeQuery(); // sql文を実行
+			
+			System.out.println("---------------------------------");
 			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
-				System.out.println("火曜日の科目："+rs.getInt("subject_name") + "を取得");
+				System.out.println("火曜日の科目："+rs.getString("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -108,14 +111,17 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = '木'";
+					+ "WHERE day = ?";
 			stmt = con.prepareStatement(sql);
+			stmt.setString(1, "木");
 			rs = stmt.executeQuery(); // sql文を実行
+			
+			System.out.println("---------------------------------");
 			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
-				System.out.println("木曜日の科目："+rs.getInt("subject_name") + "を取得");
+				System.out.println("木曜日の科目："+rs.getString("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -177,10 +183,12 @@ public class SubjectDAO {
 			stmt.setInt(1, studentId);
 			rs = stmt.executeQuery(); // sql文を実行
 			
+			System.out.println("---------------------------------");
+			
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
-				System.out.println("学生の申込科目："+rs.getInt("subject_name") + "を取得");
+				System.out.println("学生の申込科目："+rs.getString("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -223,11 +231,6 @@ public class SubjectDAO {
 
 			}
 		}
-	}
-	
-	//	申込科目更新
-	public void updateAttendSubject(int studentId,int subjectId){
-		
 	}
 	
 	//	申込科目削除

@@ -39,13 +39,15 @@ public class AttendSubject extends HttpServlet {
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、変更、削除の処理
-		switch(request.getParameter("action")){
-		case"insert":
+		switch(request.getParameter("xxx")){
+		case"申込":
 			subjectDAO.insertAttendSubject(studentId,subjectId);
+			break;
+		case"変更":
+			subjectDAO.updateAttendSubject(studentId,subjectId);
 
 			break;
-
-		case"delete":
+		case"削除":
 			subjectDAO.deleteAttendSubject(studentId,subjectId);
 
 			break;
