@@ -70,12 +70,12 @@
 		</tr>
 	</thead>
 
-	<c:forEach var="subjectView" items="${subjectListTue}">
+	<c:forEach var="tueSub" items="${tuesdaySubjectList}">
 		<tr>
-			<td><c:out value="${subjectView.subjectId}" /></td>
-			<td><c:out value="${subjectView.categoryId}" /></td>
-			<td><c:out value="${subjectView.subjectName}" /></td>
-			<td><c:out value="${subjectView.teacherName}" /></td>
+			<td><c:out value="${tueSub.subjectId}" /></td>
+			<td><c:out value="${tueSub.categoryId}" /></td>
+			<td><c:out value="${tueSub.subjectName}" /></td>
+			<td><c:out value="${tueSub.teacherName}" /></td>
 			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
 			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
 		</tr>
@@ -98,12 +98,12 @@
 		</tr>
 	</thead>
 
-	<c:forEach var="subjectView" items="${subjectListThu}">
+	<c:forEach var="thuSub" items="${thursdaySubjectList}">
 		<tr>
-			<td><c:out value="${subjectView.subjectId}" /></td>
-			<td><c:out value="${subjectView.categoryId}" /></td>
-			<td><c:out value="${subjectView.subjectName}" /></td>
-			<td><c:out value="${subjectView.teacherName}" /></td>
+			<td><c:out value="${thuSub.subjectId}" /></td>
+			<td><c:out value="${thuSub.categoryId}" /></td>
+			<td><c:out value="${thuSub.subjectName}" /></td>
+			<td><c:out value="${thuSub.teacherName}" /></td>
 			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
 			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
 		</tr>

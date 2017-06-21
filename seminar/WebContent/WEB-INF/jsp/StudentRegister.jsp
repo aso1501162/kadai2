@@ -29,14 +29,16 @@
 					<th>削除</th>
 				</tr>
 
-				<c:if test="">
-					<tr>
-						<td><c:out value="${subjectView.day}" /></td>
-						<td><c:out value="${subjectView.categoryName}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
-						<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
-					</tr>
+				<c:if test="${ attendSubjectList != null}">
+					<c:forEach var="attend" items="${attendSubjectList}">
+						<tr>
+							<td><c:out value="${attend.day}" /></td>
+							<td><c:out value="${attend.categoryName}" /></td>
+							<td><c:out value="${attend.subjectName}" /></td>
+							<td><c:out value="${attend.teacherName}" /></td>
+							<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+						</tr>
+					</c:forEach>
 				</c:if>
 
 				<tr>
@@ -62,12 +64,12 @@
 					<th width="7%">申込</th>
 				</tr>
 
-				<c:forEach var="subjectView" items="${subjectListTue}">
+				<c:forEach var="tueSub" items="${tuesdaySubjectLost}">
 					<tr>
-						<td><c:out value="${subjectView.subjectId}" /></td>
-						<td><c:out value="${subjectView.categoryName}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><c:out value="${tueSub.subjectId}" /></td>
+						<td><c:out value="${tueSub.categoryName}" /></td>
+						<td><c:out value="${tueSub.subjectName}" /></td>
+						<td><c:out value="${tueSub.teacherName}" /></td>
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
@@ -86,12 +88,12 @@
 					<th width="7%">申込</th>
 				</tr>
 
-				<c:forEach var="subjectView" items="${subjectListThu}">
+				<c:forEach var="thuSub" items="${thursdaySubjectList}">
 					<tr>
-						<td><c:out value="${subjectView.subjectId}" /></td>
-						<td><c:out value="${subjectView.categoryId}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><c:out value="${thuSub.subjectId}" /></td>
+						<td><c:out value="${thuSub.categoryId}" /></td>
+						<td><c:out value="${thuSub.subjectName}" /></td>
+						<td><c:out value="${thuSub.teacherName}" /></td>
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
