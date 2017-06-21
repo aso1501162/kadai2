@@ -42,11 +42,9 @@ public class AttendSubject extends HttpServlet {
 		switch(request.getParameter("xxx")){
 		case"申込":
 			subjectDAO.insertAttendSubject(studentId,subjectId);
+			
 			break;
-		case"変更":
-			subjectDAO.updateAttendSubject(studentId,subjectId);
-
-			break;
+			
 		case"削除":
 			subjectDAO.deleteAttendSubject(studentId,subjectId);
 

@@ -233,11 +233,6 @@ public class SubjectDAO {
 		}
 	}
 	
-	//	申込科目更新
-	public void updateAttendSubject(int studentId,int subjectId){
-		
-	}
-	
 	//	申込科目削除
 	public void deleteAttendSubject(int studentId,int subjectId){
 		
