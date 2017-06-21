@@ -1,5 +1,6 @@
 ﻿body{
 	font-size: 15px;
+	color: #292F33;
 	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN',Meiryo,メイリオ,'YuGothic','游ゴシック',Helvetica,Arial,sans-serif;
 
 }
@@ -130,3 +131,26 @@ h5{
 	padding: .1em .1em .1em .1em;
 	border-bottom: 3px double #ccc;
 }
+
+.header{
+	font-size: 14px;
+	line-height: 1px;
+	vertical-align: bottom;
+	padding: 20px;
+	text-align: right;
+
+}
+img {
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+/*
+a:not(.btn),a:link:not(.btn) {
+color: #696969;
+text-decoration: none;
+}
+a:hover:not(.btn) {
+color: #d3d6db;
+}
+*/

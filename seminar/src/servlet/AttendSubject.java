@@ -38,14 +38,14 @@ public class AttendSubject extends HttpServlet {
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
 
-		//申込、変更、削除の処理
+		//申込、削除の処理
 		switch(request.getParameter("action")){
-		case "insert":
+		case"insert":
 			subjectDAO.insertAttendSubject(studentId,subjectId);
-			
+
 			break;
-			
-		case "delete":
+
+		case"delete":
 			subjectDAO.deleteAttendSubject(studentId,subjectId);
 
 			break;
@@ -53,7 +53,7 @@ public class AttendSubject extends HttpServlet {
 		}
 
 		RequestDispatcher rd=
-				request.getRequestDispatcher("");
+				request.getRequestDispatcher("WEB-INF/jsp/StudentRegister.jsp");
 				rd.forward(request,response);
 	}
 
