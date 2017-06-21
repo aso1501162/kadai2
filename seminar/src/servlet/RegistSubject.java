@@ -35,16 +35,13 @@ public class RegistSubject extends HttpServlet {
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、変更、削除の処理
-		switch(request.getParameter("xxx")){
-		case"登録":
+		switch(request.getParameter("action")){
+		case"insert":
 			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 
 			break;
-		case"変更":
-			subjectDAO.updateSubject(subjectId, subjectName, categoryId, day, teacherId);
 
-			break;
-		case"削除":
+		case"delete":
 			subjectDAO.deleteSubject(subjectId);
 
 			break;

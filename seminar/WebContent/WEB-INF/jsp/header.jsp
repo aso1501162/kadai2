@@ -13,6 +13,7 @@
 	rel="stylesheet">
 </head>
 
+<<<<<<< HEAD
 <body>
 	<div class="header">
 		<img alt="" height="24" src="img/user.png" width="24">
@@ -24,6 +25,11 @@
 </c:if>
 		<a href="/Logout">ログアウト</a>
 	</div>
+=======
+<body>
+
+<div id="header" class="col-sm-offset-2 col-sm-8" >
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2
 
 </body>
 

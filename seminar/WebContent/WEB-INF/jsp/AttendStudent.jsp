@@ -28,6 +28,15 @@
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					</tr>
+					<c:forEach var="attend" items="${attendSubjectList}">
+						<tr>
+							<td><c:out value="${attend.day}" /></td>
+							<td><c:out value="${attend.categoryName}" /></td>
+							<td><c:out value="${attend.subjectName}" /></td>
+							<td><c:out value="${attend.teacherName}" /></td>
+							<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+						</tr>
+					</c:forEach>
 				</table> <input name="Button1" type="button" value="印刷" class="btn btn-info" />
 	</div>
 </body>
