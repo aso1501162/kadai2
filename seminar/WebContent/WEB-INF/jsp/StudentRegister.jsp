@@ -63,8 +63,7 @@
 						<td><c:out value="${tueSub.categoryName}" /></td>
 						<td><c:out value="${tueSub.subjectName}" /></td>
 						<td><c:out value="${tueSub.teacherName}" /></td>
-						<td><input type="radio" name="tue" /></td>
-						<td><input type="radio" name="thu" /></td>
+						<td><input type="radio" name="tue" value="<c:out value="${tueSub.subjectId}" />" /></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -87,8 +86,7 @@
 						<td><c:out value="${thuSub.categoryId}" /></td>
 						<td><c:out value="${thuSub.subjectName}" /></td>
 						<td><c:out value="${thuSub.teacherName}" /></td>
-						<td><input type="radio" name="tue" /></td>
-						<td><input type="radio" name="thu" /></td>
+						<td><input type="radio" name="thu" value="<c:out value="${thuSub.subjectId}" />" /></td>
 					</tr>
 				</c:forEach>
 			</table>
