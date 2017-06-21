@@ -52,14 +52,27 @@
 		</tr>
 	</thead>
 
+<<<<<<< HEAD
+	<c:forEach var="tueSub" items="${tuesdaySubjectList}">
+=======
 	<c:forEach var="tuesdaySubject" items="${tuesdaySubjectList}">
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		<tr>
+<<<<<<< HEAD
+			<td><c:out value="${tueSub.subjectId}" /></td>
+			<td><c:out value="${tueSub.categoryId}" /></td>
+			<td><c:out value="${tueSub.subjectName}" /></td>
+			<td><c:out value="${tueSub.teacherName}" /></td>
+			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
+			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
+=======
 			<td><c:out value="${tuesdaySubject.subjectId}" /></td>
 			<td><c:out value="${tuesdaySubject.categoryId}" /></td>
 			<td><c:out value="${tuesdaySubject.subjectName}" /></td>
 			<td><c:out value="${tuesdaySubject.teacherName}" /></td>
 			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
 			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		</tr>
 	</c:forEach>
 </table>
@@ -80,14 +93,27 @@
 		</tr>
 	</thead>
 
+<<<<<<< HEAD
+	<c:forEach var="thuSub" items="${thursdaySubjectList}">
+=======
 	<c:forEach var="thursdaySubject" items="${thursdaySubjectList}">
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		<tr>
+<<<<<<< HEAD
+			<td><c:out value="${thuSub.subjectId}" /></td>
+			<td><c:out value="${thuSub.categoryId}" /></td>
+			<td><c:out value="${thuSub.subjectName}" /></td>
+			<td><c:out value="${thuSub.teacherName}" /></td>
+			<td><input name="Button1" type="button" value="一覧" class="btn btn-default btn-xs" /></td>
+			<td><input name="Button2" type="button" value="削除" class="btn btn-default btn-xs" /></td>
+=======
 			<td><c:out value="${thursdaySubject.subjectId}" /></td>
 			<td><c:out value="${thursdaySubject.categoryId}" /></td>
 			<td><c:out value="${thursdaySubject.subjectName}" /></td>
 			<td><c:out value="${thursdaySubject.teacherName}" /></td>
 			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
 			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		</tr>
 	</c:forEach>
 </table>

@@ -29,6 +29,19 @@
 					<th>削除</th>
 				</tr>
 
+<<<<<<< HEAD
+				<c:if test="${ attendSubjectList != null}">
+					<c:forEach var="attend" items="${attendSubjectList}">
+						<tr>
+							<td><c:out value="${attend.day}" /></td>
+							<td><c:out value="${attend.categoryName}" /></td>
+							<td><c:out value="${attend.subjectName}" /></td>
+							<td><c:out value="${attend.teacherName}" /></td>
+							<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+						</tr>
+					</c:forEach>
+				</c:if>
+=======
 				<c:forEach var="attendSubject" items="${attendSubjectList }">
 					<tr>
 						<td><c:out value="${attendSubject.day}" /></td>
@@ -38,6 +51,7 @@
 						<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 					</tr>
 				</c:forEach>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 
 				<tr>
 					<td style="width: 109px"></td>
@@ -62,12 +76,23 @@
 					<th width="7%">申込</th>
 				</tr>
 
+<<<<<<< HEAD
+				<c:forEach var="tueSub" items="${tuesdaySubjectLost}">
+=======
 				<c:forEach var="tuesdaySubject" items="${tuesdaySubjectList}">
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 					<tr>
+<<<<<<< HEAD
+						<td><c:out value="${tueSub.subjectId}" /></td>
+						<td><c:out value="${tueSub.categoryName}" /></td>
+						<td><c:out value="${tueSub.subjectName}" /></td>
+						<td><c:out value="${tueSub.teacherName}" /></td>
+=======
 						<td><c:out value="${tuesdaySubject.subjectId}" /></td>
 						<td><c:out value="${tuesdaySubject.categoryId}" /></td>
 						<td><c:out value="${tuesdaySubject.subjectName}" /></td>
 						<td><c:out value="${tuesdaySubject.teacherName}" /></td>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
@@ -86,12 +111,23 @@
 					<th width="7%">申込</th>
 				</tr>
 
+<<<<<<< HEAD
+				<c:forEach var="thuSub" items="${thursdaySubjectList}">
+=======
 				<c:forEach var="thursdaySubject" items="${thursdaySubjectList}">
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 					<tr>
+<<<<<<< HEAD
+						<td><c:out value="${thuSub.subjectId}" /></td>
+						<td><c:out value="${thuSub.categoryId}" /></td>
+						<td><c:out value="${thuSub.subjectName}" /></td>
+						<td><c:out value="${thuSub.teacherName}" /></td>
+=======
 						<td><c:out value="${thursdaySubject.subjectId}" /></td>
 						<td><c:out value="${thursdaySubject.categoryId}" /></td>
 						<td><c:out value="${thursdaySubject.subjectName}" /></td>
 						<td><c:out value="${thursdaySubject.teacherName}" /></td>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
