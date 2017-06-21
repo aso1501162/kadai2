@@ -30,7 +30,7 @@
 				<label class="col-sm-2 control-label" for="InputId"><i
 					class="material-icons md-24">account_box</i></label>
 				<div class="col-sm-10">
-					<input type="text" name="teacherid" class="form-control" /><br>
+					<input type="text" name="teacherid" class="form-control" placeholder="ID"/><br>
 				</div>
 			</div>
 
@@ -38,7 +38,7 @@
 				<label class="col-sm-2 control-label" for="InputPassword"><i
 					class="material-icons md-24">lock</i></label>
 				<div class="col-sm-10">
-					<input type="password" name="password" class="form-control" /><br>
+					<input type="password" name="password" class="form-control" placeholder="Password"/><br>
 				</div>
 			</div>
 
