@@ -28,8 +28,8 @@
 		<input name="subject_id" type="text" placeholder="科目ID" class="form-control" />
 		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
 		<input name="teacher_name" type="text" placeholder="教師名" class="form-control" />&nbsp;&nbsp;&nbsp; 曜日
-		<input name="Radio1" type="radio" class="radio" />火曜
-		<input name="Radio1" type="radio" class="radio" />木曜 <br>
+		<input name="day" type="radio" class="radio" value="tue" />火曜
+		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
 		<dl class="submit">
 			<button type="submit" name="action" value="insert" class="btn btn-default">登録</button>
 			<button type="reset" class="btn btn-default">取消</button>

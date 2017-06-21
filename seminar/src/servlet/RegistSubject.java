@@ -25,16 +25,16 @@ public class RegistSubject extends HttpServlet {
 		//doGet(request, response);
 
 		//科目を取得
-		String subjectId = request.getParameter("xxx");
-		String subjectName = request.getParameter("xxx");
-		String categoryId = request.getParameter("xxx");
-		String day = request.getParameter("xxx");
-		String teacherId = request.getParameter("xxx");
+		String subjectId = request.getParameter("subject_id");
+		String subjectName = request.getParameter("subject_name");
+		String categoryId = request.getParameter("category-id");
+		String day = request.getParameter("day");
+		String teacherId = request.getParameter("teacher_id");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
 
-		//申込、変更、削除の処理
+		//申込、削除の処理
 		switch(request.getParameter("action")){
 		case"insert":
 			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
@@ -49,7 +49,7 @@ public class RegistSubject extends HttpServlet {
 		}
 
 		RequestDispatcher rd=
-				request.getRequestDispatcher("");
+				request.getRequestDispatcher("WEB-INF/jsp/TeacherRegister.jsp");
 				rd.forward(request,response);
 	}
 
