@@ -35,7 +35,7 @@
 			<button type="reset" class="btn btn-default">取消</button>
 		</dl>
 	</div>
-</form>
+
 
 
 <h4>科目一覧</h4>
@@ -92,6 +92,8 @@
 		</tr>
 	</c:forEach>
 </table>
+
+</form>
 
 </div>
 
