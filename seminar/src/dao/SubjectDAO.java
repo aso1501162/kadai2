@@ -61,9 +61,8 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = ?";
+					+ "WHERE day = 火";
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1, "火");
 			rs = stmt.executeQuery(); // sql文を実行
 			
 			System.out.println("---------------------------------");
@@ -111,9 +110,8 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = ?";
+					+ "WHERE day = 木";
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1, "木");
 			rs = stmt.executeQuery(); // sql文を実行
 			
 			System.out.println("---------------------------------");
