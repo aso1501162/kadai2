@@ -29,22 +29,22 @@
 					<th>削除</th>
 				</tr>
 
-				<c:if test="">
+				<c:forEach var="attendSubject" items="${attendSubjectList }">
 					<tr>
-						<td><c:out value="${subjectView.day}" /></td>
-						<td><c:out value="${subjectView.categoryName}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
-						<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+						<td><c:out value="${attendSubject.day}" /></td>
+						<td><c:out value="${attendSubject.categoryName}" /></td>
+						<td><c:out value="${attendSubject.subjectName}" /></td>
+						<td><c:out value="${attendSubject.teacherName}" /></td>
+						<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 					</tr>
-				</c:if>
+				</c:forEach>
 
 				<tr>
 					<td style="width: 109px"></td>
 					<td style="width: 231px"></td>
 					<td style="width: 363px"></td>
 					<td style="width: 285px"></td>
-					<td><input type="submit" value="削除" class="btn btn-default btn-xs" /></td>
+					<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
 				</tr>
 			</table>
 
@@ -62,12 +62,12 @@
 					<th width="7%">申込</th>
 				</tr>
 
-				<c:forEach var="subjectView" items="${subjectListTue}">
+				<c:forEach var="tuesdaySubject" items="${tuesdaySubjectList}">
 					<tr>
-						<td><c:out value="${subjectView.subjectId}" /></td>
-						<td><c:out value="${subjectView.categoryName}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><c:out value="${tuesdaySubject.subjectId}" /></td>
+						<td><c:out value="${tuesdaySubject.categoryId}" /></td>
+						<td><c:out value="${tuesdaySubject.subjectName}" /></td>
+						<td><c:out value="${tuesdaySubject.teacherName}" /></td>
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
@@ -86,12 +86,12 @@
 					<th width="7%">申込</th>
 				</tr>
 
-				<c:forEach var="subjectView" items="${subjectListThu}">
+				<c:forEach var="thursdaySubject" items="${thursdaySubjectList}">
 					<tr>
-						<td><c:out value="${subjectView.subjectId}" /></td>
-						<td><c:out value="${subjectView.categoryId}" /></td>
-						<td><c:out value="${subjectView.subjectName}" /></td>
-						<td><c:out value="${subjectView.teacherName}" /></td>
+						<td><c:out value="${thursdaySubject.subjectId}" /></td>
+						<td><c:out value="${thursdaySubject.categoryId}" /></td>
+						<td><c:out value="${thursdaySubject.subjectName}" /></td>
+						<td><c:out value="${thursdaySubject.teacherName}" /></td>
 						<td><input type="radio" name="tue" /></td>
 						<td><input type="radio" name="thu" /></td>
 					</tr>
@@ -100,7 +100,7 @@
 
 
 			<p class="right">
-				<input type="submit" value="確定" class="btn btn-default" />
+				<button type="submit" name="action" value="insert" class="btn btn-default">確定</button>
 			</p>
 		</form>
 
