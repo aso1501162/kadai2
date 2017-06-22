@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CategoryDAO;
 import dao.StudentDAO;
 import dao.SubjectDAO;
 import dao.TeacherDAO;
+import model.Category;
 import model.Student;
 import model.Subject;
 import model.Teacher;
@@ -93,9 +95,11 @@ public class Login extends HttpServlet {
 			String teacherid=request.getParameter("teacherid");
 
 			//DAOのインスタンス化
-			TeacherDAO tDAO=new TeacherDAO();
+			TeacherDAO teacherDAO = new TeacherDAO();
+			CategoryDAO categoryDAO = new CategoryDAO();
 
-			Teacher teacher=tDAO.getTeacher(teacherid,password);
+
+			Teacher teacher = teacherDAO.getTeacher(teacherid,password);
 
 			if (teacher != null) {
 				System.out.println("ログイン成功： " + teacher.getTeacherName());
@@ -105,13 +109,19 @@ public class Login extends HttpServlet {
 				//全科目Listの宣言(火曜、木曜)
 				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				List<Teacher> teacherList = new ArrayList<Teacher>();
+				List<Category> categoryList = new ArrayList<Category>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+				teacherList = teacherDAO.getTeacherList();
+				categoryList = categoryDAO.getCategoryList();
 
 				//管理者名、全科目Listのデータセット
 				session.setAttribute("loginTeacher", teacher);
 				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+				request.setAttribute("teacherList", teacherList);
+				request.setAttribute("categoryList", categoryList);
 
 				//遷移先の宣言
 				path="WEB-INF/jsp/TeacherRegister.jsp";
