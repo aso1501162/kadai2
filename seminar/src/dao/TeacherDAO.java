@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -43,7 +44,47 @@ public class TeacherDAO {
 		}
 	}
 	
-	// 管理者情報の取得
+	// 管理者リストの取得
+public ArrayList<Teacher> getTeacherList() {
+		
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM subject";
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery(); // sql文を実行
+			
+			System.out.println("---------------------------------");
+			
+			while (rs.next()) {
+				Teacher teacher = new Teacher();
+				
+				System.out.println("教師："+rs.getString("teacher_name") + "を取得");
+
+				teacher.setTeacherId(rs.getInt("teacher_id"));
+				teacher.setTeacherName(rs.getString("teacher_name"));
+				teacher.setPassword(rs.getString("password"));
+
+				teacherList.add(teacher);
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return teacherList;
+	}
+	
+	// 管理者の取得
 	public Teacher getTeacher(String teacherId, String password) {
 		Teacher teacher = new Teacher();
 

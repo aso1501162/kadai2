@@ -43,7 +43,7 @@ public class StudentDAO {
 		}
 	}
 
-	// 学生情報の取得
+	// 学生の取得
 	public Student getStudent(String studentId, String password) {
 		Student student = new Student();
 
