@@ -25,27 +25,38 @@
 <form class="form-inline" id="subject" action="" method="post">
 	<div class="form-group">
 
-		<input name="subject_id" type="listbox" placeholder="科目ID" class="form-control" />
+		<!-- 科目ID -->
+		<input name="subject_id" type="text" placeholder="科目ID" class="form-control" />
+		
+		<!-- 分類ID -->
+		<select class="form-control" name="category_id">
+			<option value="" disabled selected>--分類--</option>
+			<c:forEach var="cat" items="${categoryList}">
+				<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
+			</c:forEach>
+		</select>
+		
+		<!-- 科目名 -->
 		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
 
-		<!-- 教師名 -->
-		<select class="form-control" name="teacher_name">
-			<c:forEach var="teaNameList" itmes="${xxx}">
-				<option value=""><c:out value="${teaNameList.xxxx}"></c:out></option>
+		<!-- 教師ID -->
+		<select class="form-control" name="teacher_id">
+			<option value="" disabled selected>--教師--</option>
+			<c:forEach var="tea" items="${teacherList}">
+				<option value="<c:out value="${tea.teacherId}" />"><c:out value="${tea.teacherName}" /></option>
 			</c:forEach>
 		</select>
 
-		<!-- 分類名 -->
-		<select class="form-control" name="category_name">
-			<c:forEach var="catNameList" itmes="${xxx}">
-				<option value=""><c:out value="${catNameList.xxxx}"></c:out></option>
-			</c:forEach>
-		</select>
-
-
-		&nbsp;&nbsp;&nbsp; 曜日
+		<br>
+		
+		曜日
 		<input name="day" type="radio" class="radio" value="tue" />火曜
 		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
+		
+		<div class="text-danger text-center">
+			<c:out value="${registErrorMessage}" />
+		</div>
+					
 		<dl class="submit">
 			<button type="submit" name="action" value="insert" class="btn btn-default">登録</button>
 			<button type="reset" class="btn btn-default">取消</button>
@@ -55,6 +66,7 @@
 
 
 <h4>科目一覧</h4>
+<br>
 <h5>火 曜</h5>
 
 <table class="table table-bordered">

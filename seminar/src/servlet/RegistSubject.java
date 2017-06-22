@@ -26,11 +26,10 @@ public class RegistSubject extends HttpServlet {
 
 		//科目を取得
 		String subjectId = request.getParameter("subject_id");
+		String categoryId = request.getParameter("category_id");
 		String subjectName = request.getParameter("subject_name");
-		String categoryId = request.getParameter("category-id");
-		String day = request.getParameter("day");
 		String teacherId = request.getParameter("teacher_id");
-		String teacherName = request.getParameter("teacher_name");
+		String day = request.getParameter("day");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -42,8 +41,8 @@ public class RegistSubject extends HttpServlet {
 			//未入力欄の確認
 			try {
 				Integer.parseInt(subjectId);
-				if(subjectName.equals("")||
-				   teacherName.equals("")||
+				if(subjectId.equals("")||
+				   teacherId.equals("")||
 				   day.equals("")){
 					throw new Exception();
 				}

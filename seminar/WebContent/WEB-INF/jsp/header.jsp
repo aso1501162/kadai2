@@ -24,7 +24,7 @@
 	<c:if test="${loginTeacher != null}">
 		<c:out value="${loginTeacher.teacherName}" /> (管理者)
 	</c:if>
-	<a href="/Logout">ログアウト</a>
+	<a href="Logout">ログアウト</a>
 </div>
 	
 </body>

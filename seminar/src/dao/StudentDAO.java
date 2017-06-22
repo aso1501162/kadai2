@@ -52,7 +52,13 @@ public class StudentDAO {
 			connection();
 
 			// SQL文設定の準備・SQL文の実行
-			String sql = "SELECT * FROM student WHERE student_id=? AND password=?";
+			String sql =
+					"SELECT * "
+					+ "FROM student "
+					+ "INNER JOIN class "
+					+ "ON student.class_id = class.class_id "
+					+ "WHERE student_id=? "
+					+ "AND password=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, Integer.parseInt(studentId));
 			stmt.setString(2, password);
@@ -67,7 +73,7 @@ public class StudentDAO {
 			student.setStudentName(rs.getString("student_name"));
 			student.setPassword(rs.getString("password"));
 			student.setClassId(rs.getInt("class_id"));
-			student.setClassName(getClassName(rs.getInt("class_id")));
+			student.setClassName(rs.getString("class_name"));
 
 		} catch (Exception e) {
 			// ログイン失敗
@@ -81,36 +87,5 @@ public class StudentDAO {
 		}
 		return student;
 	}
-
-	// クラス名の取得
-		public String getClassName(int classId) {
-			String className = "";
-			try {
-				// DB接続
-				connection();
-
-				// SQL文設定の準備・SQL文の実行
-				String sql = "SELECT * FROM class WHERE class_id=?";
-				stmt = con.prepareStatement(sql);
-				stmt.setInt(1, classId);
-				rs = stmt.executeQuery(); // sql文を実行
-
-				// 1件目のデータにカーソルを合わせる
-				// データない場合はcatchに飛ぶ
-				rs.next();
-
-				//	DBから取得したデータをuserオブジェクトに格納
-				className = rs.getString("name");
-			} catch (Exception e) {
-
-			} finally {
-				try {
-					close();
-				} catch (Exception e) {
-
-				}
-			}
-			return className;
-		}
 
 }
