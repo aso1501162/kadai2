@@ -56,7 +56,7 @@
 	<c:forEach var="tueSub" items="${tuesdaySubjectList}">
 		<tr>
 			<td><c:out value="${tueSub.subjectId}" /></td>
-			<td><c:out value="${tueSub.categoryId}" /></td>
+			<td><c:out value="${tueSub.categoryName}" /></td>
 			<td><c:out value="${tueSub.subjectName}" /></td>
 			<td><c:out value="${tueSub.teacherName}" /></td>
 			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
@@ -84,7 +84,7 @@
 	<c:forEach var="thuSub" items="${thursdaySubjectList}">
 		<tr>
 			<td><c:out value="${thuSub.subjectId}" /></td>
-			<td><c:out value="${thuSub.categoryId}" /></td>
+			<td><c:out value="${thuSub.categoryName}" /></td>
 			<td><c:out value="${thuSub.subjectName}" /></td>
 			<td><c:out value="${thuSub.teacherName}" /></td>
 			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>

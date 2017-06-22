@@ -83,7 +83,7 @@
 				<c:forEach var="thuSub" items="${thursdaySubjectList}">
 					<tr>
 						<td><c:out value="${thuSub.subjectId}" /></td>
-						<td><c:out value="${thuSub.categoryId}" /></td>
+						<td><c:out value="${thuSub.categoryName}" /></td>
 						<td><c:out value="${thuSub.subjectName}" /></td>
 						<td><c:out value="${thuSub.teacherName}" /></td>
 						<td><input type="radio" name="thu" value="<c:out value="${thuSub.subjectId}" />" /></td>
