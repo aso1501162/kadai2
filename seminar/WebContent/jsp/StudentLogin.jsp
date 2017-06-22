@@ -44,7 +44,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-12 text-danger text-center">
-					<c:out value="${errorMessage}" />
+					<c:out value="${loginErrorMessage}" />
 				</div>
 			</div>
 

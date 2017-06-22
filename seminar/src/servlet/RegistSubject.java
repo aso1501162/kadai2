@@ -30,20 +30,32 @@ public class RegistSubject extends HttpServlet {
 		String categoryId = request.getParameter("category-id");
 		String day = request.getParameter("day");
 		String teacherId = request.getParameter("teacher_id");
+		String teacherName = request.getParameter("teacher_name");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
-		case"insert":
-			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 
+		case"insert":
+			//未入力欄の確認
+			try {
+				Integer.parseInt(subjectId);
+				if(subjectName.equals("")||
+				   teacherName.equals("")||
+				   day.equals("")){
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				request.setAttribute("registErrorMessage","入力内容に誤りがあります。" );
+				break;
+		    }
+			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			break;
 
 		case"delete":
 			subjectDAO.deleteSubject(subjectId);
-
 			break;
 		default:
 		}
