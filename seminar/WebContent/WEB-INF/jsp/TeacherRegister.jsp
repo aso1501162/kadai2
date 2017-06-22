@@ -25,9 +25,29 @@
 <form class="form-inline" id="subject" action="" method="post">
 	<div class="form-group">
 
-		<input name="subject_id" type="text" placeholder="科目ID" class="form-control" />
+		<select class="form-control" name="subject_id" >
+			<c:forEach var="subIdList" itemes="${xxx}">
+				<option value=""><c:out value="${subIdList.xxxx}"></c:out></option>
+			</c:forEach>
+		</select>
+
+		<select class="form-control" name="subject_name">
+			<c:forEach var="subNameList" itemes="${xxx}">
+				<option value=""><c:out value="${subNameList.xxxx}"></c:out></option>
+			</c:forEach>
+		</select>
+
+		<select class="form-control" name="teacher_name">
+			<c:forEach var="teaNameList" itemes="${xxx}">
+				<option value=""><c:out value="${teaNameList.xxxx}"></c:out></option>
+			</c:forEach>
+		</select>
+
+		<!---<input name="subject_id" type="listbox" placeholder="科目ID" class="form-control" />
 		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
-		<input name="teacher_name" type="text" placeholder="教師名" class="form-control" />&nbsp;&nbsp;&nbsp; 曜日
+		<input name="teacher_name" type="text" placeholder="教師名" class="form-control" />--->
+
+		&nbsp;&nbsp;&nbsp; 曜日
 		<input name="day" type="radio" class="radio" value="tue" />火曜
 		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
 		<dl class="submit">
