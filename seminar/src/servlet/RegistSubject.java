@@ -29,18 +29,12 @@ public class RegistSubject extends HttpServlet {
 		String subjectId = request.getParameter("subject_id");
 		String categoryId = request.getParameter("category_id");
 		String subjectName = request.getParameter("subject_name");
-<<<<<<< HEAD
 		String categoryId = request.getParameter("category_id");
 		String day = request.getParameter("day");
-=======
->>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		String teacherId = request.getParameter("teacher_id");
-<<<<<<< HEAD
 		String teacherName = request.getParameter("teacher_name");
 		String listSubjectId = request.getParameter("list_subject_id");
-=======
 		String day = request.getParameter("day");
->>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();

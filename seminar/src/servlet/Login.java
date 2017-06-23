@@ -83,7 +83,7 @@ public class Login extends HttpServlet {
 				path = "WEB-INF/jsp/StudentRegister.jsp";
 			} else {
 				System.out.println("ログイン失敗");
-				request.setAttribute("errorMessage", "ユーザIDまたはパスワードが違います。");
+				request.setAttribute("loginErrorMessage", "ユーザIDまたはパスワードが違います。");
 				//遷移先の宣言
 				path = "jsp/StudentLogin.jsp";
 			}

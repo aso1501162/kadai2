@@ -56,7 +56,8 @@ public ArrayList<Teacher> getTeacherList() {
 			// SQL文設定の準備・SQL文の実行
 			String sql =
 					"SELECT * "
-					+ "FROM teacher";
+					+ "FROM teacher "
+					+ "ORDER BY teacher_id";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			

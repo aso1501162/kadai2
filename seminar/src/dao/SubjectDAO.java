@@ -61,7 +61,8 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = '火'";
+					+ "WHERE day = '火' "
+					+ "ORDER BY subject_id";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			
@@ -110,7 +111,8 @@ public class SubjectDAO {
 					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE day = '木'";
+					+ "WHERE day = '木' "
+					+ "ORDER BY subject_id";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			
@@ -169,14 +171,15 @@ public class SubjectDAO {
 			// SQL文設定の準備・SQL文の実行
 			String sql =
 					"SELECT * "
-					+ "FROM (subject "
+					+ "FROM subject "
 					+ "INNER JOIN category "
-					+ "ON subject.category_id = category.category_id) "
+					+ "ON subject.category_id = category.category_id "
 					+ "INNER JOIN attendance "
 					+ "ON subject.subject_id = attendance.subject_id "
 					+ "INNER JOIN teacher "
 					+ "ON subject.teacher_id = teacher.teacher_id "
-					+ "WHERE student_id = ?";
+					+ "WHERE student_id = ? "
+					+ "ORDER BY subject.subject_id";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			rs = stmt.executeQuery(); // sql文を実行
