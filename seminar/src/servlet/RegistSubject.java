@@ -27,12 +27,20 @@ public class RegistSubject extends HttpServlet {
 
 		//科目を取得
 		String subjectId = request.getParameter("subject_id");
+		String categoryId = request.getParameter("category_id");
 		String subjectName = request.getParameter("subject_name");
+<<<<<<< HEAD
 		String categoryId = request.getParameter("category_id");
 		String day = request.getParameter("day");
+=======
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 		String teacherId = request.getParameter("teacher_id");
+<<<<<<< HEAD
 		String teacherName = request.getParameter("teacher_name");
 		String listSubjectId = request.getParameter("list_subject_id");
+=======
+		String day = request.getParameter("day");
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -45,8 +53,8 @@ public class RegistSubject extends HttpServlet {
 			//未入力欄の確認
 			try {
 				Integer.parseInt(subjectId);
-				if(subjectName.equals("")||
-				   teacherName.equals("")||
+				if(subjectId.equals("")||
+				   teacherId.equals("")||
 				   day.equals("")){
 					throw new Exception();
 				}
