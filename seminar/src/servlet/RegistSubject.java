@@ -35,7 +35,7 @@ public class RegistSubject extends HttpServlet {
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
-		StudentDAO studentdao = new StudentDAO();
+		StudentDAO studentDAO = new StudentDAO();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
