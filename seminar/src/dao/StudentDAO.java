@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -86,6 +87,56 @@ public class StudentDAO {
 			}
 		}
 		return student;
+	}
+	
+	//	申込学生リスト取得
+	public ArrayList<Student> getAttendStudentList(String subjectId) {
+		
+		ArrayList<Student> attendSubjectList = new ArrayList<Student>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM student "
+					+ "INNER JOIN class "
+					+ "ON student.class_id = class.class_id "
+					+ "INNER JOIN attend "
+					+ "ON student.studentid = attend.student_id "
+					+ "WHERE subject_id = ? "
+					+ "ORDER BY student.student_id";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, Integer.parseInt(subjectId));
+			rs = stmt.executeQuery(); // sql文を実行
+			
+			System.out.println("---------------------------------");
+			
+			while (rs.next()) {
+				Student student = new Student();
+				
+				System.out.println("申込学生："+rs.getString("student_name") + "を取得");
+
+				student.setStudentId(rs.getInt("student_id"));
+				student.setStudentName(rs.getString("student_name"));
+				student.setPassword(rs.getString("password"));
+				student.setClassId(rs.getInt("class_id"));
+				student.setClassName(rs.getString("class_name"));
+
+				attendSubjectList.add(student);
+				
+			}
+		} catch (Exception e) {
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return attendSubjectList;
 	}
 
 }

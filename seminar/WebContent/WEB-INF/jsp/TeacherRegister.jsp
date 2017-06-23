@@ -87,8 +87,8 @@
 			<td><c:out value="${tueSub.categoryName}" /></td>
 			<td><c:out value="${tueSub.subjectName}" /></td>
 			<td><c:out value="${tueSub.teacherName}" /></td>
-			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
-			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
+			<td><button type="submit" name="action" value="list" class="btn btn-default"><input type="hidden" value="<c:out value="${tueSub.subjectId}" />" name="list_subject_id">一覧</button></td>
+			<td><button type="submit" name="action" value="delete" class="btn btn-default"><input type="hidden" value="<c:out value="${tueSub.subjectId}" />" name="delete_subject_id">削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
@@ -115,8 +115,8 @@
 			<td><c:out value="${thuSub.categoryName}" /></td>
 			<td><c:out value="${thuSub.subjectName}" /></td>
 			<td><c:out value="${thuSub.teacherName}" /></td>
-			<td><button type="submit" name="action" value="list" class="btn btn-default">一覧</button></td>
-			<td><button type="submit" name="action" value="delete" class="btn btn-default">削除</button></td>
+			<td><button type="submit" name="action" value="list" class="btn btn-default"><input type="hidden" value="<c:out value="${thuSub.subjectId}" />" name="list_subject_id">一覧</button></td>
+			<td><button type="submit" name="action" value="delete" class="btn btn-default"><input type="hidden" value="<c:out value="${thuSub.subjectId}" />" name="delete_subject_id">削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
