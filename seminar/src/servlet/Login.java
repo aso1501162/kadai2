@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,21 +62,24 @@ public class Login extends HttpServlet {
 				SubjectDAO subjectDAO = new SubjectDAO();
 
 				//受講科目Listの宣言
-				List<Subject> attendSubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
 				attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
 
 				//全科目Listの宣言(火曜、木曜)
-				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
-				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
+				if(attendSubjectList.size()<2){
+					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
+				}
 
 				//生徒名、受講科目List、全科目Listのデータセット
 				session.setAttribute("loginStudent", student);
 				session.setAttribute("attendSubjectList", attendSubjectList);
 				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
-
 
 				//遷移先の宣言
 				path = "WEB-INF/jsp/StudentRegister.jsp";
@@ -107,10 +109,10 @@ public class Login extends HttpServlet {
 				SubjectDAO subjectDAO = new SubjectDAO();
 
 				//全科目Listの宣言(火曜、木曜)
-				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
-				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
-				List<Teacher> teacherList = new ArrayList<Teacher>();
-				List<Category> categoryList = new ArrayList<Category>();
+				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+				ArrayList<Category> categoryList = new ArrayList<Category>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 				teacherList = teacherDAO.getTeacherList();

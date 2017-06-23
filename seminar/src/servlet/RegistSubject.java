@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.StudentDAO;
 import dao.SubjectDAO;
+import model.Student;
 
 @WebServlet("/RegistSubject")
 public class RegistSubject extends HttpServlet {
@@ -25,30 +27,28 @@ public class RegistSubject extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 
-		//科目を取得
-		String subjectId = request.getParameter("subject_id");
-		String subjectName = request.getParameter("subject_name");
-		String categoryId = request.getParameter("category_id");
-		String teacherId = request.getParameter("teacher_id");
-		String teacherName = request.getParameter("teacher_name");
-		String day = request.getParameter("day");
-
-		//インスタンス化
-		SubjectDAO subjectDAO = new SubjectDAO();
-		StudentDAO studentDAO = new StudentDAO();
-
 		//申込、削除の処理
 		switch(request.getParameter("action")){
 
 		case"insert":
+
 			//未入力欄の確認
 			try {
-				Integer.parseInt(subjectId);
-				if(subjectId.equals("")||
-				   teacherId.equals("")||
+
+				//科目を取得
+				int subjectId = Integer.parseInt(request.getParameter("subject_id"));
+				String subjectName = request.getParameter("subject_name");
+				int categoryId = Integer.parseInt(request.getParameter("category_id"));
+				String day = request.getParameter("day");
+				int teacherId = Integer.parseInt(request.getParameter("teacher_id"));
+
+				if(subjectName.equals("")||
 				   day.equals("")){
 					throw new Exception();
 				}
+
+				//科目登録
+				SubjectDAO subjectDAO = new SubjectDAO();
 				subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			} catch (Exception e) {
 				request.setAttribute("registErrorMessage","入力内容に誤りがあります。" );
@@ -57,14 +57,23 @@ public class RegistSubject extends HttpServlet {
 			break;
 
 		case"delete":
-			String deleteSubjectId = request.getParameter("delete_subject_id");
-			subjectDAO.deleteSubject(subjectId);
+
+			int deleteSubjectId = Integer.parseInt(request.getParameter("delete_subject_id"));
+			SubjectDAO subjectDAO = new SubjectDAO();
+
+			//科目の削除
+			subjectDAO.deleteSubject(deleteSubjectId);
 
 			break;
 
 		case"list":
-			String listSubjectId = request.getParameter("list_subject_id");
-			studentDAO.getAttendStudentList(listSubjectId);
+
+			ArrayList<Student> attendStudentList = new ArrayList<Student>();
+			int listSubjectId = Integer.parseInt(request.getParameter("list_subject_id"));
+			StudentDAO studentDAO = new StudentDAO();
+
+			//受講者リストの取得
+			attendStudentList=studentDAO.getAttendStudentList(listSubjectId);
 
 			break;
 

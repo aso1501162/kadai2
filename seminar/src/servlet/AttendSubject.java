@@ -26,34 +26,38 @@ public class AttendSubject extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 
-		HttpSession session = request.getSession();
-
 		//ユーザー情報の取得
+		HttpSession session = request.getSession();
 		Student student = (Student)session.getAttribute("student");
 		int studentId = student.getStudentId();
-
-		//科目を取得
-		String tueSubjectId = request.getParameter("tue");
-		String thuSubjectId = request.getParameter("thu");
-
-		//インスタンス化
-		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
 		case"insert":
+
+			//科目を取得
+			int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
+			int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
+
+			//インスタンス化
+			SubjectDAO subjectDAO = new SubjectDAO();
+
+			//科目登録
 			subjectDAO.insertAttendSubject(studentId,tueSubjectId,thuSubjectId);
 
 			break;
-
 		case"delete":
-			String deleteAttendSubjectId = request.getParameter("delete_attend_subject_id");
+
+			//科目の取得
+			int deleteAttendSubjectId = Integer.parseInt(request.getParameter("delete_attend_subject_id"));
+
+			//科目の削除
 			subjectDAO.deleteAttendSubject(studentId,deleteAttendSubjectId);
 
 			break;
-
 		default:
 		}
+
 
 		RequestDispatcher rd=
 				request.getRequestDispatcher("WEB-INF/jsp/StudentRegister.jsp");
