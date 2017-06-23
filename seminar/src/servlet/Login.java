@@ -42,13 +42,13 @@ public class Login extends HttpServlet {
 		HttpSession session=request.getSession();
 		if (session != null) {
 			session.invalidate();
-			session=request.getSession();
+			session = request.getSession();
 		}
 		String path = "";
 
 		//学生ログイン
 		String password=request.getParameter("password");
-		if(request.getParameter("studentid")!=null){
+		if(request.getParameter("studentid") != null){
 
 			String studentid = request.getParameter("studentid");
 
@@ -80,12 +80,12 @@ public class Login extends HttpServlet {
 
 
 				//遷移先の宣言
-				path="WEB-INF/jsp/StudentRegister.jsp";
+				path = "WEB-INF/jsp/StudentRegister.jsp";
 			} else {
 				System.out.println("ログイン失敗");
 				request.setAttribute("loginErrorMessage", "ユーザIDまたはパスワードが違います。");
 				//遷移先の宣言
-				path="jsp/StudentLogin.jsp";
+				path = "jsp/StudentLogin.jsp";
 			}
 
 		}
@@ -124,12 +124,12 @@ public class Login extends HttpServlet {
 				request.setAttribute("categoryList", categoryList);
 
 				//遷移先の宣言
-				path="WEB-INF/jsp/TeacherRegister.jsp";
+				path = "WEB-INF/jsp/TeacherRegister.jsp";
 			} else {
 				System.out.println("ログイン失敗");
 				request.setAttribute("loginErrorMessage", "ユーザIDまたはパスワードが違います。");
 				//遷移先の宣言
-				path="jsp/TeacherLogin.jsp";
+				path = "jsp/TeacherLogin.jsp";
 			}
 		}
 

@@ -26,14 +26,16 @@ public class AttendSubject extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
 
 		//ユーザー情報の取得
-		Student student=(Student)session.getAttribute("student");
+		Student student = (Student)session.getAttribute("student");
 		int studentId = student.getStudentId();
 
 		//科目を取得
-		int subjectId=Integer.parseInt(request.getParameter("subjectid"));
+		String tueSubjectId = request.getParameter("tue");
+		String thuSubjectId = request.getParameter("thu");
+		String deleteSubjectId = request.getParameter("delete_subject_id");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -41,14 +43,15 @@ public class AttendSubject extends HttpServlet {
 		//申込、削除の処理
 		switch(request.getParameter("action")){
 		case"insert":
-			subjectDAO.insertAttendSubject(studentId,subjectId);
+			subjectDAO.insertAttendSubject(studentId,tueSubjectId,thuSubjectId);
 
 			break;
 
 		case"delete":
-			subjectDAO.deleteAttendSubject(studentId,subjectId);
+			subjectDAO.deleteAttendSubject(studentId,deleteSubjectId);
 
 			break;
+
 		default:
 		}
 
@@ -56,5 +59,4 @@ public class AttendSubject extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/jsp/StudentRegister.jsp");
 				rd.forward(request,response);
 	}
-
 }

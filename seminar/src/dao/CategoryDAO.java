@@ -56,8 +56,7 @@ public ArrayList<Category> getCategoryList() {
 			// SQL文設定の準備・SQL文の実行
 			String sql =
 					"SELECT * "
-					+ "FROM category "
-					+ "ORDER BY category_id";
+					+ "FROM category";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			

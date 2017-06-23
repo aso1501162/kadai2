@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.StudentDAO;
 import dao.SubjectDAO;
 
 @WebServlet("/RegistSubject")
@@ -28,11 +29,16 @@ public class RegistSubject extends HttpServlet {
 		String subjectId = request.getParameter("subject_id");
 		String categoryId = request.getParameter("category_id");
 		String subjectName = request.getParameter("subject_name");
+		String categoryId = request.getParameter("category_id");
+		String day = request.getParameter("day");
 		String teacherId = request.getParameter("teacher_id");
+		String teacherName = request.getParameter("teacher_name");
+		String listSubjectId = request.getParameter("list_subject_id");
 		String day = request.getParameter("day");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
+		StudentDAO studentdao = new StudentDAO();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
@@ -46,16 +52,23 @@ public class RegistSubject extends HttpServlet {
 				   day.equals("")){
 					throw new Exception();
 				}
+				subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			} catch (Exception e) {
 				request.setAttribute("registErrorMessage","入力内容に誤りがあります。" );
-				break;
 		    }
-			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
+
 			break;
 
 		case"delete":
 			subjectDAO.deleteSubject(subjectId);
+
 			break;
+
+		case"list":
+			studentDAO.getAttendStudentList(listSubjectId);
+
+			break;
+
 		default:
 		}
 
@@ -63,5 +76,4 @@ public class RegistSubject extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/jsp/TeacherRegister.jsp");
 				rd.forward(request,response);
 	}
-
 }
