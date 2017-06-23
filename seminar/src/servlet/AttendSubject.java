@@ -35,7 +35,6 @@ public class AttendSubject extends HttpServlet {
 		//科目を取得
 		String tueSubjectId = request.getParameter("tue");
 		String thuSubjectId = request.getParameter("thu");
-		String deleteSubjectId = request.getParameter("delete_subject_id");
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
@@ -48,7 +47,8 @@ public class AttendSubject extends HttpServlet {
 			break;
 
 		case"delete":
-			subjectDAO.deleteAttendSubject(studentId,deleteSubjectId);
+			String deleteAttendSubjectId = request.getParameter("delete_attend_subject_id");
+			subjectDAO.deleteAttendSubject(studentId,deleteAttendSubjectId);
 
 			break;
 

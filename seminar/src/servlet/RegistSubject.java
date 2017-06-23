@@ -27,13 +27,10 @@ public class RegistSubject extends HttpServlet {
 
 		//科目を取得
 		String subjectId = request.getParameter("subject_id");
-		String categoryId = request.getParameter("category_id");
 		String subjectName = request.getParameter("subject_name");
 		String categoryId = request.getParameter("category_id");
-		String day = request.getParameter("day");
 		String teacherId = request.getParameter("teacher_id");
 		String teacherName = request.getParameter("teacher_name");
-		String listSubjectId = request.getParameter("list_subject_id");
 		String day = request.getParameter("day");
 
 		//インスタンス化
@@ -60,11 +57,13 @@ public class RegistSubject extends HttpServlet {
 			break;
 
 		case"delete":
+			String deleteSubjectId = request.getParameter("delete_subject_id");
 			subjectDAO.deleteSubject(subjectId);
 
 			break;
 
 		case"list":
+			String listSubjectId = request.getParameter("list_subject_id");
 			studentDAO.getAttendStudentList(listSubjectId);
 
 			break;
