@@ -90,7 +90,7 @@ public class StudentDAO {
 	}
 	
 	//	申込学生リスト取得
-	public ArrayList<Student> getAttendStudentList(String subjectId) {
+	public ArrayList<Student> getAttendStudentList(int subjectId) {
 		
 		ArrayList<Student> attendSubjectList = new ArrayList<Student>();
 		
@@ -109,7 +109,7 @@ public class StudentDAO {
 					+ "WHERE subject_id = ? "
 					+ "ORDER BY student.student_id";
 			stmt = con.prepareStatement(sql);
-			stmt.setInt(1, Integer.parseInt(subjectId));
+			stmt.setInt(1, subjectId);
 			rs = stmt.executeQuery(); // sql文を実行
 			
 			System.out.println("---------------------------------");

@@ -30,6 +30,9 @@ public class AttendSubject extends HttpServlet {
 		HttpSession session = request.getSession();
 		Student student = (Student)session.getAttribute("student");
 		int studentId = student.getStudentId();
+		
+		//インスタンス化
+		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
@@ -39,9 +42,6 @@ public class AttendSubject extends HttpServlet {
 			int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
 			int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
 
-			//インスタンス化
-			SubjectDAO subjectDAO = new SubjectDAO();
-
 			//科目登録
 			subjectDAO.insertAttendSubject(studentId,tueSubjectId,thuSubjectId);
 
@@ -50,7 +50,7 @@ public class AttendSubject extends HttpServlet {
 
 			//科目の取得
 			int deleteAttendSubjectId = Integer.parseInt(request.getParameter("delete_attend_subject_id"));
-
+			
 			//科目の削除
 			subjectDAO.deleteAttendSubject(studentId,deleteAttendSubjectId);
 
