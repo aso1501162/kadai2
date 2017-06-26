@@ -27,6 +27,8 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
+  vertical-align: middle;
+
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -145,7 +147,6 @@ img {
 	margin-right: 10px;
 
 }
-
 /*
 a:not(.btn),a:link:not(.btn) {
 color: #696969;
@@ -154,4 +155,15 @@ text-decoration: none;
 a:hover:not(.btn) {
 color: #d3d6db;
 }
-*/
+form{
+	width:100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.subcenter{
+	width:65%;
+	margin: 0 auto;
+}

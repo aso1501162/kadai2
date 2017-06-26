@@ -10,7 +10,8 @@
 	<title>教師科目登録画面</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -19,37 +20,42 @@
 	<br>
 	<div class="text">
 
-	<h4>科目登録</h4>
 
+		<h4>科目登録</h4>
 
-<form class="form-inline" id="subject" action="" method="post">
+		<div class="subcenter">
+			<form class="form-inline" class="subject" action="" method="post">
 	<div class="form-group">
 
 		<!-- 科目ID -->
-		<input name="subject_id" type="text" placeholder="科目ID" class="form-control" />
+					<i class="material-icons md-18">mode_edit</i> <input
+						name="subject_id" type="text" placeholder="科目ID"
+						class="form-control" />
 		
-		<!-- 分類ID -->
-		<select class="form-control" name="category_id">
-			<option value="" disabled selected>--分類--</option>
+					<!-- 分類 -->
+					<select class="form-control" name="category_id"
+						style="width: 200px">
+						<option value="" disabled selected>-------分類-------</option>
 			<c:forEach var="cat" items="${categoryList}">
-				<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
+							<option value="<c:out value="${cat.categoryId}" /><c:out value="${cat.categoryName}" /></option>
 			</c:forEach>
 		</select>
-		
+		<br>
+		<i class="material-icons md-18">mode_edit</i>
 		<!-- 科目名 -->
 		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
 
 		<!-- 教師ID -->
-		<select class="form-control" name="teacher_id">
-			<option value="" disabled selected>--教師--</option>
+		<select class="form-control" name="teacher_id" style="width:200px">
+			<option value="" disabled selected>-------教師-------</option>
 			<c:forEach var="tea" items="${teacherList}">
-				<option value="<c:out value="${tea.teacherId}" />"><c:out value="${tea.teacherName}" /></option>
+				<option value="<c:out value="${tea.teacherId}" /><c:out value="${tea.teacherName}" /></option>
 			</c:forEach>
 		</select>
 
 		<br>
 		
-		曜日
+		<i class="material-icons md-18">mode_edit</i>　曜日　
 		<input name="day" type="radio" class="radio" value="tue" />火曜
 		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
 		
@@ -58,10 +64,20 @@
 		</div>
 					
 		<dl class="submit">
+		<div class="radio">
+				<label>
 			<button type="submit" name="action" value="insert" class="btn btn-default">登録</button>
+			</label>
+			</div>
+			<div class="radio">
+				<label>
 			<button type="reset" class="btn btn-default">取消</button>
+			</label>
+			</div>
 		</dl>
 	</div>
+	</form>
+</div>
 
 
 
