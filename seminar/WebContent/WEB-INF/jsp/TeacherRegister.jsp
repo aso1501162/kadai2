@@ -10,7 +10,8 @@
 	<title>教師科目登録画面</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -19,10 +20,9 @@
 	<br>
 	<div class="text">
 
-	<h4>科目登録</h4>
 
+		<h4>科目登録</h4>
 
-<form class="form-inline" id="subject" action="RegistSubject" method="post">
 		<div class="subcenter">
 			<form class="form-inline" class="subject" action="" method="post">
 	<div class="form-group">
