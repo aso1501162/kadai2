@@ -22,7 +22,7 @@
 	<h4>科目登録</h4>
 
 
-<form class="form-inline" id="subject" action="" method="post">
+<form class="form-inline" id="subject" action="RegistSubject" method="post">
 	<div class="form-group">
 
 		<!-- 科目ID -->

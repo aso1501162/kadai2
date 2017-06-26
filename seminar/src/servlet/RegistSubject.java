@@ -9,12 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import dao.CategoryDAO;
 import dao.StudentDAO;
 import dao.SubjectDAO;
+import dao.TeacherDAO;
+import model.Category;
 import model.Student;
 import model.Subject;
+import model.Teacher;
 
 @WebServlet("/RegistSubject")
 public class RegistSubject extends HttpServlet {
@@ -31,6 +34,17 @@ public class RegistSubject extends HttpServlet {
 
 		//＊教師川操作＊
 		String path="";
+		
+		//DAOのインスタンス化
+		TeacherDAO teacherDAO = new TeacherDAO();
+		CategoryDAO categoryDAO = new CategoryDAO();
+		SubjectDAO subjectDAO = new SubjectDAO();
+
+		//全科目Listの宣言(火曜、木曜)
+		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
+		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+		ArrayList<Category> categoryList = new ArrayList<Category>();
 
 		//申込、削除の処理
 		switch(request.getParameter("action")){
@@ -53,11 +67,22 @@ public class RegistSubject extends HttpServlet {
 				}
 
 				//科目登録
-				SubjectDAO subjectDAO = new SubjectDAO();
 				subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			} catch (Exception e) {
 				request.setAttribute("insertRegistErrorMessage","入力内容に誤りがあります。" );
 		    }
+			
+			tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
+			thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+			teacherList = teacherDAO.getTeacherList();
+			categoryList = categoryDAO.getCategoryList();
+
+			//管理者名、全科目Listのデータセット
+			request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
+			request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+			request.setAttribute("teacherList", teacherList);
+			request.setAttribute("categoryList", categoryList);
+			
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
 		break;
@@ -67,7 +92,6 @@ public class RegistSubject extends HttpServlet {
 			try{
 
 				int deleteSubjectId = Integer.parseInt(request.getParameter("delete_subject_id"));
-				SubjectDAO subjectDAO = new SubjectDAO();
 
 				//科目の削除
 				subjectDAO.deleteSubject(deleteSubjectId);
@@ -75,6 +99,18 @@ public class RegistSubject extends HttpServlet {
 			} catch (Exception e) {
 				request.setAttribute("deleteRegistErrorMessage","科目の削除に失敗しました。" );
 		    }
+			
+			tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
+			thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+			teacherList = teacherDAO.getTeacherList();
+			categoryList = categoryDAO.getCategoryList();
+
+			//管理者名、全科目Listのデータセット
+			request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
+			request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+			request.setAttribute("teacherList", teacherList);
+			request.setAttribute("categoryList", categoryList);
+			
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
 		break;
@@ -92,34 +128,21 @@ public class RegistSubject extends HttpServlet {
 				path="WEB-INF/jsp/AttendStudent.jsp";
 
 			} catch (Exception e) {
-				request.setAttribute("listRegistErrorMessage","受講者リストの取得に失敗しました。" );
-
-				SubjectDAO subjectDAO = new SubjectDAO();
-				HttpSession session = request.getSession();
-				Student student = (Student)session.getAttribute("student");
-
-				//受講科目Listの宣言
-				ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
-				attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
-
-				//全科目Listの宣言(火曜、木曜)
-				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
-				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+				teacherList = teacherDAO.getTeacherList();
+				categoryList = categoryDAO.getCategoryList();
+				
+				request.setAttribute("listRegistErrorMessage","受講者リストの取得に失敗しました。" );
 
-				if(attendSubjectList.size()<2){
-					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
-				}
-
-				//生徒名、受講科目List、全科目Listのデータセット
-				session.setAttribute("loginStudent", student);
-				session.setAttribute("attendSubjectList", attendSubjectList);
+				//管理者名、全科目Listのデータセット
 				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+				request.setAttribute("teacherList", teacherList);
+				request.setAttribute("categoryList", categoryList);
 
 				//遷移先の宣言
-				path="WEB-INF/jsp/TeacherRegister.jsp";
+				path = "WEB-INF/jsp/TeacherRegister.jsp";
 		    }
 		break;
 

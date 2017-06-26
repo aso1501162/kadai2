@@ -19,7 +19,7 @@
 	<div class="text">
 
 		<h4>申込済み</h4>
-		<form method="post" action="">
+		<form method="post" action="AttendSubject">
 			<table class="table table-bordered">
 				<tr class="active">
 					<th width="10%">曜日</th>

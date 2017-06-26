@@ -45,7 +45,7 @@ public class StudentDAO {
 	}
 
 	// 学生の取得
-	public Student getStudent(String studentId, String password) throws Exception {
+	public Student getStudent(String studentId, String password) {
 		Student student = new Student();
 
 		try {

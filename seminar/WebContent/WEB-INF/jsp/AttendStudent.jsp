@@ -17,7 +17,7 @@
 	<div class="list">
 		<h4>受講学生一覧</h4>
 		<br>
-			<div class="listname">講座名 〇人</div> <br>
+			<div class="listname">講座名 <c:out value="${attendStudentList.size()}" />人</div> <br>
 
 				<table class="table table-bordered">
 					<tr class="active">
