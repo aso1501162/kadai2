@@ -45,7 +45,7 @@ public class SubjectDAO {
 	}
 	
 	//	火曜日の科目リスト取得
-	public ArrayList<Subject> getTuesdaySubjectList() {
+	public ArrayList<Subject> getTuesdaySubjectList() throws Exception {
 		
 		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		
@@ -95,7 +95,7 @@ public class SubjectDAO {
 	}
 	
 //	木曜日の科目リスト取得
-	public ArrayList<Subject> getThursdaySubjectList() {
+	public ArrayList<Subject> getThursdaySubjectList() throws Exception {
 		
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 		
@@ -145,12 +145,12 @@ public class SubjectDAO {
 	}
 	
 	//	科目登録
-	public void insertSubject(int subjectId, String subjectName, int categoryId, String day, int teacherId){
+	public void insertSubject(int subjectId, String subjectName, int categoryId, String day, int teacherId) throws Exception {
 		try {
 			// DB接続
 			connection();
 			// SQL文設定の準備・SQL文の実行
-			String sql = "INSERT INTO attendance VALUES(?,?)";
+			String sql = "INSERT INTO subject VALUES(?,?)";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, subjectId);
 			stmt.setString(2, subjectName);
@@ -169,12 +169,12 @@ public class SubjectDAO {
 	}
 	
 	//	科目削除
-	public void deleteSubject(int subjectId){
+	public void deleteSubject(int subjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
 			// SQL文設定の準備・SQL文の実行
-			String sql = "INSERT INTO attendance VALUES(?,?)";
+			String sql = "DELETE FROM";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, subjectId);
 			stmt.executeUpdate();
@@ -190,7 +190,7 @@ public class SubjectDAO {
 	}
 	
 	//	申込科目リスト取得
-	public ArrayList<Subject> getAttendSubjectList(int studentId) {
+	public ArrayList<Subject> getAttendSubjectList(int studentId) throws Exception {
 		
 		ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
 		
@@ -243,7 +243,7 @@ public class SubjectDAO {
 	}
 
 	// 申込科目登録
-	public void insertAttendSubject(int studentId, int tueSubjectId, int thuSubjectId) {
+	public void insertAttendSubject(int studentId, int tueSubjectId, int thuSubjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
@@ -265,12 +265,14 @@ public class SubjectDAO {
 	}
 	
 	//	申込科目削除
-	public void deleteAttendSubject(int studentId,int subjectId){
+	public void deleteAttendSubject(int studentId,int subjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
 			// SQL文設定の準備・SQL文の実行
-			String sql = "DELETE";
+			String sql = "DELETE FROM attendance "
+					+ "WHERE studentid = ? "
+					+ "AND subjectid = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, subjectId);

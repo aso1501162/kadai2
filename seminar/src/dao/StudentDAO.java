@@ -45,7 +45,7 @@ public class StudentDAO {
 	}
 
 	// 学生の取得
-	public Student getStudent(String studentId, String password) {
+	public Student getStudent(String studentId, String password) throws Exception {
 		Student student = new Student();
 
 		try {
@@ -90,7 +90,7 @@ public class StudentDAO {
 	}
 	
 	//	申込学生リスト取得
-	public ArrayList<Student> getAttendStudentList(int subjectId) {
+	public ArrayList<Student> getAttendStudentList(int subjectId) throws Exception {
 		
 		ArrayList<Student> attendSubjectList = new ArrayList<Student>();
 		
