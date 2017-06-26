@@ -264,7 +264,7 @@ public class SubjectDAO {
 			
 			// SQL文設定の準備・SQL文の実行
 			//	同じ学生が既に登録している同じ曜日の申込科目を取得する
-			String selectMatchDaySQL = "SELECT * "
+			String selectMatchDaySQL = "SELECT attendance.subject_id subjectid "
 					+ "FROM attendance "
 					+ "INNER JOIN subject "
 					+ "ON attendance.subject_id = subject.subject_id "
