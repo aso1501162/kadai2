@@ -180,7 +180,14 @@ public class SubjectDAO {
 					+ "WHERE subject_id = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, subjectId);
+			
+			System.out.println("delete");
+			
 			stmt.executeUpdate();
+			
+			System.out.println("---------------------------------");
+			System.out.println("科目："+ subjectId + "を削除");
+			
 		} catch (Exception e) {
 
 		} finally {
@@ -265,7 +272,14 @@ public class SubjectDAO {
 			stmt = con.prepareStatement(selectMatchDaySQL);
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, subjectId);
+			
+			System.out.println("insert");
+			
 			stmt.executeUpdate();
+			
+			
+			
+			System.out.println("---------------------------------");
 			
 			if (rs.next()) {
 				//	同じ曜日の申込科目が存在する
@@ -283,6 +297,8 @@ public class SubjectDAO {
 				stmt.setInt(3, previousSubjectId);
 				stmt.executeUpdate();
 				
+				System.out.println("学生の申込科目："+ subjectId + "を登録");
+				
 			} else {
 				//	同じ曜日の申込科目が存在しない
 				//	申込科目を追加する
@@ -293,8 +309,12 @@ public class SubjectDAO {
 				stmt.setInt(2, subjectId);
 				stmt.executeUpdate();
 				
+				System.out.println("学生の申込科目："+ subjectId + "を登録");
+				
 			}
 		} catch (Exception e) {
+
+			System.out.println(e);
 
 		} finally {
 			try {
@@ -312,13 +332,22 @@ public class SubjectDAO {
 			connection();
 			// SQL文設定の準備・SQL文の実行
 			String sql = "DELETE FROM attendance "
-					+ "WHERE studentid = ? "
-					+ "AND subjectid = ?";
+					+ "WHERE student_id = ? "
+					+ "AND subject_id = ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, subjectId);
+			
+			System.out.println("delete");
+			
 			stmt.executeUpdate();
+			
+			System.out.println("---------------------------------");
+			System.out.println("学生の申込科目："+ subjectId + "を削除");
+			
 		} catch (Exception e) {
+
+			System.out.println(e);
 
 		} finally {
 			try {
