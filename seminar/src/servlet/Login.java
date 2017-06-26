@@ -32,6 +32,8 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = "";
+
 		System.out.println("---------------------------------");
 		System.out.println("Login.javaを通った");
 		System.out.println("studentid： " + request.getParameter("studentid"));
@@ -43,7 +45,6 @@ public class Login extends HttpServlet {
 			session.invalidate();
 			session = request.getSession();
 		}
-		String path = "";
 
 		//学生ログイン
 		String password=request.getParameter("password");
