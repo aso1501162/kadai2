@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
 						style="width: 200px">
 						<option value="" disabled selected>-------分類-------</option>
 			<c:forEach var="cat" items="${categoryList}">
-							<option value="<c:out value="${cat.categoryId}" /><c:out value="${cat.categoryName}" /></option>
+							<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
 			</c:forEach>
 		</select>
 		<br>
@@ -49,7 +50,7 @@
 		<select class="form-control" name="teacher_id" style="width:200px">
 			<option value="" disabled selected>-------教師-------</option>
 			<c:forEach var="tea" items="${teacherList}">
-				<option value="<c:out value="${tea.teacherId}" /><c:out value="${tea.teacherName}" /></option>
+				<option value="<c:out value="${tea.teacherId}" />"><c:out value="${tea.teacherName}" /></option>
 			</c:forEach>
 		</select>
 

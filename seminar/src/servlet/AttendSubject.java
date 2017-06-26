@@ -46,12 +46,14 @@ public class AttendSubject extends HttpServlet {
 
 				if (request.getParameter("tue") != null) {
 					int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
+					System.out.println(tueSubjectId);
 					//科目登録
 					subjectDAO.insertAttendSubject(studentId,tueSubjectId);
 				}
 				
 				if (request.getParameter("thu") != null) {
 					int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
+					System.out.println(thuSubjectId);
 					//科目登録
 					subjectDAO.insertAttendSubject(studentId,thuSubjectId);
 				}
@@ -66,6 +68,8 @@ public class AttendSubject extends HttpServlet {
 		case"delete":
 			try{
 
+				System.out.println("削除： "+request.getParameter("delete_attend_subject_id"));
+				
 				//科目の取得
 				int deleteAttendSubjectId = Integer.parseInt(request.getParameter("delete_attend_subject_id"));
 
