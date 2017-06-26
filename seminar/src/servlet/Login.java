@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,6 +32,8 @@ public class Login extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = "";
+
 		System.out.println("---------------------------------");
 		System.out.println("Login.javaを通った");
 		System.out.println("studentid： " + request.getParameter("studentid"));
@@ -42,13 +43,12 @@ public class Login extends HttpServlet {
 		HttpSession session=request.getSession();
 		if (session != null) {
 			session.invalidate();
-			session=request.getSession();
+			session = request.getSession();
 		}
-		String path = "";
 
 		//学生ログイン
 		String password=request.getParameter("password");
-		if(request.getParameter("studentid")!=null){
+		if(request.getParameter("studentid") != null){
 
 			String studentid = request.getParameter("studentid");
 
@@ -63,14 +63,18 @@ public class Login extends HttpServlet {
 				SubjectDAO subjectDAO = new SubjectDAO();
 
 				//受講科目Listの宣言
-				List<Subject> attendSubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
 				attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
 
 				//全科目Listの宣言(火曜、木曜)
-				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
-				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
+				if(attendSubjectList.size()<2){
+					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
+				}
 
 				//生徒名、受講科目List、全科目Listのデータセット
 				session.setAttribute("loginStudent", student);
@@ -78,14 +82,13 @@ public class Login extends HttpServlet {
 				request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 				request.setAttribute("thursdaySubjectList", thursdaySubjectList);
 
-
 				//遷移先の宣言
-				path="WEB-INF/jsp/StudentRegister.jsp";
+				path = "WEB-INF/jsp/StudentRegister.jsp";
 			} else {
 				System.out.println("ログイン失敗");
 				request.setAttribute("loginErrorMessage", "ユーザIDまたはパスワードが違います。");
 				//遷移先の宣言
-				path="jsp/StudentLogin.jsp";
+				path = "jsp/StudentLogin.jsp";
 			}
 
 		}
@@ -107,10 +110,10 @@ public class Login extends HttpServlet {
 				SubjectDAO subjectDAO = new SubjectDAO();
 
 				//全科目Listの宣言(火曜、木曜)
-				List<Subject> tuesdaySubjectList = new ArrayList<Subject>();
-				List<Subject> thursdaySubjectList = new ArrayList<Subject>();
-				List<Teacher> teacherList = new ArrayList<Teacher>();
-				List<Category> categoryList = new ArrayList<Category>();
+				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
+				ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
+				ArrayList<Category> categoryList = new ArrayList<Category>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 				teacherList = teacherDAO.getTeacherList();
@@ -124,12 +127,12 @@ public class Login extends HttpServlet {
 				request.setAttribute("categoryList", categoryList);
 
 				//遷移先の宣言
-				path="WEB-INF/jsp/TeacherRegister.jsp";
+				path = "WEB-INF/jsp/TeacherRegister.jsp";
 			} else {
 				System.out.println("ログイン失敗");
 				request.setAttribute("loginErrorMessage", "ユーザIDまたはパスワードが違います。");
 				//遷移先の宣言
-				path="jsp/TeacherLogin.jsp";
+				path = "jsp/TeacherLogin.jsp";
 			}
 		}
 

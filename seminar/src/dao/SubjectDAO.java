@@ -45,7 +45,7 @@ public class SubjectDAO {
 	}
 	
 	//	火曜日の科目リスト取得
-	public ArrayList<Subject> getTuesdaySubjectList() {
+	public ArrayList<Subject> getTuesdaySubjectList() throws Exception {
 		
 		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		
@@ -95,7 +95,7 @@ public class SubjectDAO {
 	}
 	
 //	木曜日の科目リスト取得
-	public ArrayList<Subject> getThursdaySubjectList() {
+	public ArrayList<Subject> getThursdaySubjectList() throws Exception {
 		
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 		
@@ -145,22 +145,52 @@ public class SubjectDAO {
 	}
 	
 	//	科目登録
-	public void insertSubject(String subjectId, String subjectName, String categoryId, String day, String teacherId){
-		
-	}
-	
-	//	科目更新
-	public void updateSubject(String subjectId, String subjectName, String categoryId, String day, String teacherId){
-		
+	public void insertSubject(int subjectId, String subjectName, int categoryId, String day, int teacherId) throws Exception {
+		try {
+			// DB接続
+			connection();
+			// SQL文設定の準備・SQL文の実行
+			String sql = "INSERT INTO subject VALUES(?,?)";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, subjectId);
+			stmt.setString(2, subjectName);
+			stmt.setInt(3, categoryId);
+			stmt.setInt(4, teacherId);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}	
 	}
 	
 	//	科目削除
-	public void deleteSubject(String subjectId){
-		
+	public void deleteSubject(int subjectId) throws Exception {
+		try {
+			// DB接続
+			connection();
+			// SQL文設定の準備・SQL文の実行
+			String sql = "DELETE FROM";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, subjectId);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
 	}
 	
 	//	申込科目リスト取得
-	public ArrayList<Subject> getAttendSubjectList(int studentId) {
+	public ArrayList<Subject> getAttendSubjectList(int studentId) throws Exception {
 		
 		ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
 		
@@ -213,7 +243,7 @@ public class SubjectDAO {
 	}
 
 	// 申込科目登録
-	public void insertAttendSubject(int studentId, int subjectId) {
+	public void insertAttendSubject(int studentId, int tueSubjectId, int thuSubjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
@@ -221,7 +251,7 @@ public class SubjectDAO {
 			String sql = "INSERT INTO attendance VALUES(?,?)";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
-			stmt.setInt(2, subjectId);
+			stmt.setInt(2, tueSubjectId);
 			stmt.executeUpdate();
 		} catch (Exception e) {
 
@@ -235,7 +265,26 @@ public class SubjectDAO {
 	}
 	
 	//	申込科目削除
-	public void deleteAttendSubject(int studentId,int subjectId){
-		
+	public void deleteAttendSubject(int studentId,int subjectId) throws Exception {
+		try {
+			// DB接続
+			connection();
+			// SQL文設定の準備・SQL文の実行
+			String sql = "DELETE FROM attendance "
+					+ "WHERE studentid = ? "
+					+ "AND subjectid = ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, studentId);
+			stmt.setInt(2, subjectId);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
 	}
 }

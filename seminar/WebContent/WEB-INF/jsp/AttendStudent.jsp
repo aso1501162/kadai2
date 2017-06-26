@@ -28,7 +28,7 @@
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					</tr>
-					<c:forEach var="attend" items="${attendSubjectList}">
+					<c:forEach var="attend" items="${attendStudentList}">
 						<tr>
 							<td><c:out value="${attend.day}" /></td>
 							<td><c:out value="${attend.categoryName}" /></td>
