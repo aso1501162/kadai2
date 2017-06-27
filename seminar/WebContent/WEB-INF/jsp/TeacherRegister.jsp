@@ -1,5 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -32,7 +31,7 @@
 					<i class="material-icons md-18">mode_edit</i> <input
 						name="subject_id" type="text" placeholder="科目ID"
 						class="form-control" />
-		
+
 					<!-- 分類 -->
 					<select class="form-control" name="category_id"
 						style="width: 200px">
@@ -55,15 +54,15 @@
 		</select>
 
 		<br>
-		
+
 		<i class="material-icons md-18">mode_edit</i>　曜日　
 		<input name="day" type="radio" class="radio" value="tue" />火曜
 		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
-		
+
 		<div class="text-danger text-center">
 			<c:out value="${registErrorMessage}" />
 		</div>
-					
+
 		<dl class="submit">
 		<div class="radio">
 				<label>
@@ -145,3 +144,4 @@
 </body>
 
 </html>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git

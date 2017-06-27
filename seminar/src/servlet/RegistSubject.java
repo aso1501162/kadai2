@@ -128,10 +128,6 @@ public class RegistSubject extends HttpServlet {
 				path="WEB-INF/jsp/AttendStudent.jsp";
 
 			} catch (Exception e) {
-				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
-				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
-				teacherList = teacherDAO.getTeacherList();
-				categoryList = categoryDAO.getCategoryList();
 
 				request.setAttribute("listRegistErrorMessage","受講者リストの取得に失敗しました。" );
 
