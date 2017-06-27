@@ -94,7 +94,7 @@ public class SubjectDAO {
 		return tuesdaySubjectList;
 	}
 	
-//	木曜日の科目リスト取得
+	//	木曜日の科目リスト取得
 	public ArrayList<Subject> getThursdaySubjectList() {
 		
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
@@ -159,10 +159,6 @@ public class SubjectDAO {
 			stmt.setString(4, day);
 			stmt.setInt(4, teacherId);
 			stmt.executeUpdate();
-			
-			System.out.println("---------------------------------");
-			System.out.println("科目："+ subjectName + "を登録");
-			
 		} catch (Exception e) {
 
 		} finally {
@@ -233,7 +229,7 @@ public class SubjectDAO {
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
-				System.out.println("学生の申込科目："+rs.getString("subject_name") + "を取得");
+				System.out.println("studentId： " + studentId + "学生の申込科目："+rs.getString("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -256,20 +252,19 @@ public class SubjectDAO {
 		return attendSubjectList;
 	}
 
-	// 申込科目登録
+	//	申込科目登録
 	public void insertAttendSubject(int studentId, int subjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
-			
-			// SQL文設定の準備・SQL文の実行
+			// SQL文設定の準備・SQL文の実行			
 			//	同じ学生が既に登録している同じ曜日の申込科目を取得する
-			String selectMatchDaySQL = "SELECT attendance.subject_id subjectid "
+			String selectMatchDaySQL = "SELECT * "
 					+ "FROM attendance "
 					+ "INNER JOIN subject "
 					+ "ON attendance.subject_id = subject.subject_id "
 					+ "WHERE student_id = ? "
-					+ "AND day = "
+					+ "AND day LIKE "
 					+ "(SELECT day "
 					+ "FROM subject "
 					+ "WHERE subject_id = ?)";
@@ -277,22 +272,19 @@ public class SubjectDAO {
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, subjectId);
 			
-			System.out.println("insert");
-			
-			stmt.executeUpdate();
-			
-			
+			rs = stmt.executeQuery();
 			
 			System.out.println("---------------------------------");
 			
 			if (rs.next()) {
 				//	同じ曜日の申込科目が存在する
+				System.out.println("すでにある"); 
 				
 				int previousSubjectId = rs.getInt("subject_id");
 				
 				//	申込科目を置き換える
 				String updateSQL =  "UPDATE attendance "
-						+ "SET subject_id = ?"
+						+ "SET subject_id = ? "
 						+ "WHERE student_id = ? "
 						+ "AND subject_id = ?";
 				stmt = con.prepareStatement(updateSQL);
@@ -301,10 +293,11 @@ public class SubjectDAO {
 				stmt.setInt(3, previousSubjectId);
 				stmt.executeUpdate();
 				
-				System.out.println("学生の申込科目："+ subjectId + "を登録");
+				System.out.println("studentId： " + studentId + "の申込科目： "+ subjectId + "を登録");
 				
 			} else {
 				//	同じ曜日の申込科目が存在しない
+				System.out.println("まだない"); 
 				//	申込科目を追加する
 				String insertSQL =  "INSERT INTO attendance "
 						+ "VALUES (?,?)";
@@ -313,7 +306,7 @@ public class SubjectDAO {
 				stmt.setInt(2, subjectId);
 				stmt.executeUpdate();
 				
-				System.out.println("学生の申込科目："+ subjectId + "を登録");
+				System.out.println("studentId： " + studentId + "の申込科目： "+ subjectId + "を登録");
 				
 			}
 		} catch (Exception e) {
@@ -330,7 +323,7 @@ public class SubjectDAO {
 	}
 	
 	//	申込科目削除
-	public void deleteAttendSubject(int studentId,int subjectId) throws Exception {
+	public void deleteAttendSubject(int studentId, int subjectId) throws Exception {
 		try {
 			// DB接続
 			connection();
@@ -347,10 +340,10 @@ public class SubjectDAO {
 			stmt.executeUpdate();
 			
 			System.out.println("---------------------------------");
-			System.out.println("学生の申込科目："+ subjectId + "を削除");
+			System.out.println("studentId： " + studentId +  "の申込科目： "+ subjectId + "を削除");
 			
 		} catch (Exception e) {
-			
+
 			System.out.println(e);
 
 		} finally {

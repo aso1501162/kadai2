@@ -34,7 +34,7 @@ public class RegistSubject extends HttpServlet {
 
 		//＊教師川操作＊
 		String path="";
-		
+
 		//DAOのインスタンス化
 		TeacherDAO teacherDAO = new TeacherDAO();
 		CategoryDAO categoryDAO = new CategoryDAO();
@@ -71,7 +71,7 @@ public class RegistSubject extends HttpServlet {
 			} catch (Exception e) {
 				request.setAttribute("insertRegistErrorMessage","入力内容に誤りがあります。" );
 		    }
-			
+
 			tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 			thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 			teacherList = teacherDAO.getTeacherList();
@@ -82,7 +82,7 @@ public class RegistSubject extends HttpServlet {
 			request.setAttribute("thursdaySubjectList", thursdaySubjectList);
 			request.setAttribute("teacherList", teacherList);
 			request.setAttribute("categoryList", categoryList);
-			
+
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
 		break;
@@ -99,7 +99,7 @@ public class RegistSubject extends HttpServlet {
 			} catch (Exception e) {
 				request.setAttribute("deleteRegistErrorMessage","科目の削除に失敗しました。" );
 		    }
-			
+
 			tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 			thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 			teacherList = teacherDAO.getTeacherList();
@@ -110,7 +110,7 @@ public class RegistSubject extends HttpServlet {
 			request.setAttribute("thursdaySubjectList", thursdaySubjectList);
 			request.setAttribute("teacherList", teacherList);
 			request.setAttribute("categoryList", categoryList);
-			
+
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
 		break;
@@ -132,7 +132,7 @@ public class RegistSubject extends HttpServlet {
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 				teacherList = teacherDAO.getTeacherList();
 				categoryList = categoryDAO.getCategoryList();
-				
+
 				request.setAttribute("listRegistErrorMessage","受講者リストの取得に失敗しました。" );
 
 				//管理者名、全科目Listのデータセット
