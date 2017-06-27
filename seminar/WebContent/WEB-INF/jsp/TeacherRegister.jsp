@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -38,8 +39,8 @@
 						<option value="" disabled selected>-------分類-------</option>
 						<c:forEach var="cat" items="${categoryList}">
 							<option value="<c:out value="${cat.categoryId}" /><c:out value="${cat.categoryName}" /></option>
-			</c:forEach>
-		</select>
+						</c:forEach>
+					</select>
 		<br>
 		<i class="material-icons md-18">mode_edit</i>
 		<!-- 科目名 -->
@@ -137,10 +138,7 @@
 	</c:forEach>
 </table>
 
-</form>
-
 </div>
 
 </body>
-
 </html>
