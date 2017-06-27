@@ -12,7 +12,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
-</head>S
+</head>
 
 <body>
 
