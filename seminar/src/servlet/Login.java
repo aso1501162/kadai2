@@ -48,6 +48,8 @@ public class Login extends HttpServlet {
 
 		//学生ログイン
 		String password=request.getParameter("password");
+
+		try {
 		if(request.getParameter("studentid") != null){
 
 			String studentid = request.getParameter("studentid");
@@ -70,7 +72,9 @@ public class Login extends HttpServlet {
 				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
-				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
+					thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
 
 				if(attendSubjectList.size()<2){
 					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
@@ -90,8 +94,13 @@ public class Login extends HttpServlet {
 				//遷移先の宣言
 				path = "jsp/StudentLogin.jsp";
 			}
-
 		}
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+
 		//管理者ログイン
 		if(request.getParameter("teacherid")!=null){
 
@@ -103,7 +112,7 @@ public class Login extends HttpServlet {
 
 
 			Teacher teacher = teacherDAO.getTeacher(teacherid,password);
-
+			try{
 			if (teacher != null) {
 				System.out.println("ログイン成功： " + teacher.getTeacherName());
 
@@ -134,6 +143,10 @@ public class Login extends HttpServlet {
 				//遷移先の宣言
 				path = "jsp/TeacherLogin.jsp";
 			}
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(path);

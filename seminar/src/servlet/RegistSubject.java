@@ -100,13 +100,24 @@ public class RegistSubject extends HttpServlet {
 
 				//受講科目Listの宣言
 				ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
-				attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
+				try {
+					attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
+				} catch (Exception e2) {
+					// TODO 自動生成された catch ブロック
+					e2.printStackTrace();
+				}
 
 				//全科目Listの宣言(火曜、木曜)
 				ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 				ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
-				tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
-				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+				try {
+					tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
+					thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
+				} catch (Exception e1) {
+					// TODO 自動生成された catch ブロック
+					e1.printStackTrace();
+				}
 
 				if(attendSubjectList.size()<2){
 					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
