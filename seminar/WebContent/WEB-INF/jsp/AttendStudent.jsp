@@ -14,6 +14,7 @@
 </head>
 
 <body>
+	<jsp:include page="header.jsp" />
 	<div class="list">
 		<h4>受講学生一覧</h4>
 		<br>
