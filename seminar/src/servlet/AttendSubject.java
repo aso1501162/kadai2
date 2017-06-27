@@ -33,55 +33,66 @@ public class AttendSubject extends HttpServlet {
 
 		//ユーザー情報の取得
 		HttpSession session = request.getSession();
-		Student student = (Student)session.getAttribute("student");
+		Student student = (Student)session.getAttribute("loginStudent");
 		int studentId = student.getStudentId();
 
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//申込、削除の処理
+		try{
 		switch(request.getParameter("action")){
 		case"insert":
-			try{
 
-				//科目を取得
-				int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
-				int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
+				if (request.getParameter("tue") != null) {
+					int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
+					System.out.println(tueSubjectId);
+					//科目登録
+					subjectDAO.insertAttendSubject(studentId,tueSubjectId);
+				}
+				
+				if (request.getParameter("thu") != null) {
+					int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
+					System.out.println(thuSubjectId);
+					//科目登録
+					subjectDAO.insertAttendSubject(studentId,thuSubjectId);
+				}
+				
+				
 
-				//科目登録
-				subjectDAO.insertAttendSubject(studentId,tueSubjectId,thuSubjectId);
-
-			} catch (Exception e) {
-				request.setAttribute("insertAttendErrorMessage","科目の申込に失敗しました。" );
-		    }
 				break;
 
 		case"delete":
-			try{
 
+				System.out.println("削除： "+request.getParameter("delete_attend_subject_id"));
+				
 				//科目の取得
 				int deleteAttendSubjectId = Integer.parseInt(request.getParameter("delete_attend_subject_id"));
 
 				//科目の削除
 				subjectDAO.deleteAttendSubject(studentId,deleteAttendSubjectId);
 
-			} catch (Exception e) {
-				request.setAttribute("deleteAttendErrorMessage","申込科目の削除に失敗しました。" );
-			}
 				break;
 
 				default:
 			}
+		} catch (Exception e) {
+			request.setAttribute("deleteAttendErrorMessage","申込科目の削除に失敗しました。" );
+		}
 
 		//受講科目Listの宣言
 		ArrayList<Subject> attendSubjectList = new ArrayList<Subject>();
-		attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
+		try {
+			attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
+
 
 		//全科目Listの宣言(火曜、木曜)
 		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
+
 		tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 		thursdaySubjectList = subjectDAO.getThursdaySubjectList();
+
 
 		if(attendSubjectList.size()<2){
 			request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
@@ -92,6 +103,11 @@ public class AttendSubject extends HttpServlet {
 		session.setAttribute("attendSubjectList", attendSubjectList);
 		request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 		request.setAttribute("thursdaySubjectList", thursdaySubjectList);
+
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 
 		//遷移先の宣言
 		path = "WEB-INF/jsp/StudentRegister.jsp";
