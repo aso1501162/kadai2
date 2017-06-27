@@ -1,5 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -7,10 +6,10 @@
 <html>
 
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>教師科目登録画面</title>
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title>教師科目登録画面</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 </head>
@@ -26,9 +25,9 @@
 
 		<div class="subcenter">
 			<form class="form-inline" class="subject" action="" method="post">
-				<div class="form-group">
+	<div class="form-group">
 
-					<!-- 科目ID -->
+		<!-- 科目ID -->
 					<i class="material-icons md-18">mode_edit</i> <input
 						name="subject_id" type="text" placeholder="科目ID"
 						class="form-control" />
@@ -37,28 +36,28 @@
 					<select class="form-control" name="category_id"
 						style="width: 200px">
 						<option value="" disabled selected>-------分類-------</option>
-						<c:forEach var="cat" items="${categoryList}">
-						<!--  	<option value="<c:out value="${cat.categoryId}" /><c:out value="${cat.categoryName}" /></option> -->
-						</c:forEach>
-					</select>
-				<br>
-				<i class="material-icons md-18">mode_edit</i>
-				<!-- 科目名 -->
-				<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
+			<c:forEach var="cat" items="${categoryList}">
+							<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
+			</c:forEach>
+		</select>
+		<br>
+		<i class="material-icons md-18">mode_edit</i>
+		<!-- 科目名 -->
+		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
 
 		<!-- 教師ID -->
 		<select class="form-control" name="teacher_id" style="width:200px">
 			<option value="" disabled selected>-------教師-------</option>
 			<c:forEach var="tea" items="${teacherList}">
-				<!-- <option value="<c:out value="${tea.teacherId}" /><c:out value="${tea.teacherName}" /></option> -->
+				<option value="<c:out value="${tea.teacherId}" />"><c:out value="${tea.teacherName}" /></option>
 			</c:forEach>
 		</select>
 
 		<br>
 
 		<i class="material-icons md-18">mode_edit</i>　曜日　
-		<input name="day" type="radio" class="radio" value="tue" /> 火曜　
-		<input name="day" type="radio" class="radio" value="thu" /> 木曜 <br>
+		<input name="day" type="radio" class="radio" value="tue" />火曜
+		<input name="day" type="radio" class="radio" value="thu" />木曜 <br>
 
 		<div class="text-danger text-center">
 			<c:out value="${registErrorMessage}" />
@@ -145,3 +144,4 @@
 </body>
 
 </html>
+>>>>>>> branch 'master' of https://github.com/aso1501162/kadai2.git
