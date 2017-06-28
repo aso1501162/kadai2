@@ -101,6 +101,7 @@ public class RegistSubject extends HttpServlet {
 				subjectDAO.deleteSubject(deleteSubjectId);
 
 			} catch (Exception e) {
+				System.out.println(e);
 				request.setAttribute("deleteRegistErrorMessage","科目の削除に失敗しました。" );
 		    }
 

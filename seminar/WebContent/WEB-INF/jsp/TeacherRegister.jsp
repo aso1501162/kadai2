@@ -18,6 +18,17 @@
 
 	<jsp:include page="header.jsp" />
 	<br>
+
+		<div class="col-sm-12 text-danger text-center">
+		<c:out value="${insertRegistErrorMessage}" />
+	</div>
+	<div class="col-sm-12 text-danger text-center">
+		<c:out value="${deleteRegistErrorMessage}" />
+	</div>
+	<div class="col-sm-12 text-danger text-center">
+		<c:out value="${listRegistErrorMessage}" />
+	</div>
+
 	<div class="text">
 
 
@@ -55,8 +66,8 @@
 		<br>
 
 		<i class="material-icons md-18">mode_edit</i>　曜日　
-		<input name="day" type="radio" class="radio" value="tue" /> 火曜　
-		<input name="day" type="radio" class="radio" value="thu" /> 木曜 <br>
+		<input name="day" type="radio" class="radio" value="火" /> 火曜　
+		<input name="day" type="radio" class="radio" value="木" /> 木曜 <br>
 
 		<div class="text-danger text-center">
 			<c:out value="${registErrorMessage}" />
