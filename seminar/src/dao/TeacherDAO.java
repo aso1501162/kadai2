@@ -75,6 +75,7 @@ public ArrayList<Teacher> getTeacherList() {
 				teacherList.add(teacher);
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -110,6 +111,7 @@ public ArrayList<Teacher> getTeacherList() {
 			teacher.setPassword(rs.getString("password"));
 
 		} catch (Exception e) {
+			System.out.println(e);
 			// ログイン失敗
 			teacher = null;
 		} finally {

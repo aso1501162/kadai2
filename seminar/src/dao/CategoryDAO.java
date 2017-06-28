@@ -74,6 +74,7 @@ public ArrayList<Category> getCategoryList() {
 				categoryList.add(category);
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();

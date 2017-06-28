@@ -84,6 +84,7 @@ public class SubjectDAO {
 				tuesdaySubjectList.add(subject);
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -134,6 +135,7 @@ public class SubjectDAO {
 				thursdaySubjectList.add(subject);
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -146,6 +148,7 @@ public class SubjectDAO {
 	
 	//	科目登録
 	public void insertSubject(int subjectId, String subjectName, int categoryId, String day, int teacherId) throws Exception {
+		System.out.println("科目登録DAOきた");
 		try {
 			// DB接続
 			connection();
@@ -157,10 +160,10 @@ public class SubjectDAO {
 			stmt.setString(2, subjectName);
 			stmt.setInt(3, categoryId);
 			stmt.setString(4, day);
-			stmt.setInt(4, teacherId);
+			stmt.setInt(5, teacherId);
 			stmt.executeUpdate();
 		} catch (Exception e) {
-
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -186,10 +189,10 @@ public class SubjectDAO {
 			stmt.executeUpdate();
 			
 			System.out.println("---------------------------------");
-			System.out.println("科目："+ subjectId + "を削除");
+			System.out.println("科目ID："+ subjectId + "を削除");
 			
 		} catch (Exception e) {
-
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -229,7 +232,7 @@ public class SubjectDAO {
 			while (rs.next()) {
 				Subject subject = new Subject();
 				
-				System.out.println("studentId： " + studentId + "学生の申込科目："+rs.getString("subject_name") + "を取得");
+				System.out.println("学生ID： " + studentId + "の申込科目ID："+rs.getString("subject_name") + "を取得");
 
 				subject.setSubjectId(rs.getInt("subject_id"));
 				subject.setSubjectName(rs.getString("subject_name"));
@@ -242,6 +245,7 @@ public class SubjectDAO {
 				attendSubjectList.add(subject);
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();
@@ -292,7 +296,7 @@ public class SubjectDAO {
 				stmt.setInt(3, previousSubjectId);
 				stmt.executeUpdate();
 				
-				System.out.println("studentId： " + studentId + "の申込科目： "+ subjectId + "を登録");
+				System.out.println("学生ID： " + studentId + "の申込科目ID： "+ subjectId + "を登録");
 				
 			} else {
 				//	同じ曜日の申込科目が存在しない
@@ -305,13 +309,11 @@ public class SubjectDAO {
 				stmt.setInt(2, subjectId);
 				stmt.executeUpdate();
 				
-				System.out.println("studentId： " + studentId + "の申込科目： "+ subjectId + "を登録");
+				System.out.println("学生ID： " + studentId + "の申込科目ID： "+ subjectId + "を登録");
 				
 			}
 		} catch (Exception e) {
-
 			System.out.println(e);
-
 		} finally {
 			try {
 				close();
@@ -339,12 +341,10 @@ public class SubjectDAO {
 			stmt.executeUpdate();
 			
 			System.out.println("---------------------------------");
-			System.out.println("studentId： " + studentId +  "の申込科目： "+ subjectId + "を削除");
+			System.out.println("学生ID： " + studentId +  "の申込科目ID： "+ subjectId + "を削除");
 			
 		} catch (Exception e) {
-
 			System.out.println(e);
-
 		} finally {
 			try {
 				close();

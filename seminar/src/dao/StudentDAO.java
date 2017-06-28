@@ -77,6 +77,7 @@ public class StudentDAO {
 			student.setClassName(rs.getString("class_name"));
 
 		} catch (Exception e) {
+			System.out.println(e);
 			// ログイン失敗
 			student = null;
 		} finally {
@@ -91,6 +92,8 @@ public class StudentDAO {
 	
 	//	申込学生リスト取得
 	public ArrayList<Student> getAttendStudentList(int subjectId) throws Exception {
+		
+		System.out.println("リストDAOきた");
 		
 		ArrayList<Student> attendSubjectList = new ArrayList<Student>();
 		
@@ -117,7 +120,7 @@ public class StudentDAO {
 			while (rs.next()) {
 				Student student = new Student();
 				
-				System.out.println("申込学生："+rs.getString("student_name") + "を取得");
+				System.out.println("科目ID： " + subjectId + "の申込学生："+rs.getString("student_name") + "を取得");
 
 				student.setStudentId(rs.getInt("student_id"));
 				student.setStudentName(rs.getString("student_name"));
@@ -129,6 +132,7 @@ public class StudentDAO {
 				
 			}
 		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
 				close();
