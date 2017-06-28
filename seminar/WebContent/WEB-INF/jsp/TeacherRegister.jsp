@@ -66,8 +66,6 @@
 		<br>
 
 		<i class="material-icons md-18">mode_edit</i>　曜日　
-		<input name="day" type="radio" class="radio" value="火" /> 火曜　
-		<input name="day" type="radio" class="radio" value="木" /> 木曜 <br>
 
 		<div class="text-danger text-center">
 			<c:out value="${registErrorMessage}" />
