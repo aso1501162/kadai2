@@ -37,7 +37,7 @@
 						style="width: 200px">
 						<option value="" disabled selected>-------分類-------</option>
 						<c:forEach var="cat" items="${categoryList}">
-							<option value="<c:out value="${cat.categoryId}" /><c:out value="${cat.categoryName}" /></option>
+							<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
 						</c:forEach>
 					</select>
 		<br>
