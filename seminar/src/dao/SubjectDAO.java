@@ -278,7 +278,6 @@ public class SubjectDAO {
 			
 			if (rs.next()) {
 				//	同じ曜日の申込科目が存在する
-				System.out.println("すでにある"); 
 				
 				int previousSubjectId = rs.getInt("subject_id");
 				
@@ -297,7 +296,7 @@ public class SubjectDAO {
 				
 			} else {
 				//	同じ曜日の申込科目が存在しない
-				System.out.println("まだない"); 
+				
 				//	申込科目を追加する
 				String insertSQL =  "INSERT INTO attendance "
 						+ "VALUES (?,?)";
