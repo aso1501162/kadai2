@@ -66,7 +66,7 @@ public class RegistSubject extends HttpServlet {
 				   day.equals("")){
 					throw new Exception();
 				}
-
+				
 				//科目登録
 				subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			} catch (Exception e) {

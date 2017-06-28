@@ -148,7 +148,6 @@ public class SubjectDAO {
 	
 	//	科目登録
 	public void insertSubject(int subjectId, String subjectName, int categoryId, String day, int teacherId) throws Exception {
-		System.out.println("科目登録DAOきた");
 		try {
 			// DB接続
 			connection();
@@ -162,6 +161,10 @@ public class SubjectDAO {
 			stmt.setString(4, day);
 			stmt.setInt(5, teacherId);
 			stmt.executeUpdate();
+			
+			System.out.println("---------------------------------");
+			System.out.println("科目："+ subjectName + "を登録");
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
