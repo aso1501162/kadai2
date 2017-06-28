@@ -22,9 +22,8 @@
 
 
 		<h4>科目登録</h4>
-
+	<form class="form-inline" class="subject" action="RegistSubject" method="post">
 		<div class="subcenter">
-			<form class="form-inline" class="subject" action="RegistSubject" method="post">
 				<div class="form-group">
 
 					<!-- 科目ID -->
@@ -76,7 +75,6 @@
 			</div>
 		</dl>
 	</div>
-	</form>
 </div>
 
 
@@ -136,8 +134,9 @@
 		</tr>
 	</c:forEach>
 </table>
-
+	</form>
 </div>
+
 
 </body>
 </html>

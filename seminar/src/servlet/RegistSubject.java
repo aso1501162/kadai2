@@ -53,6 +53,7 @@ public class RegistSubject extends HttpServlet {
 
 			//未入力欄の確認
 			try {
+				System.out.println("インサートはじめ");
 
 				//科目を取得
 				int subjectId = Integer.parseInt(request.getParameter("subject_id"));
@@ -85,9 +86,12 @@ public class RegistSubject extends HttpServlet {
 
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
+
+			System.out.println("インサートおわり");
 		break;
 
 		case"delete":
+			System.out.println("デリートはじめ");
 
 			try{
 
@@ -113,9 +117,12 @@ public class RegistSubject extends HttpServlet {
 
 			//遷移先の宣言
 			path="WEB-INF/jsp/TeacherRegister.jsp";
+
+			System.out.println("デリートおわり");
 		break;
 
 		case"list":
+			System.out.println("リストはじめ");
 			try{
 
 				ArrayList<Student> attendStudentList = new ArrayList<Student>();
@@ -140,6 +147,7 @@ public class RegistSubject extends HttpServlet {
 				//遷移先の宣言
 				path = "WEB-INF/jsp/TeacherRegister.jsp";
 		    }
+			System.out.println("リストおわり");
 		break;
 
 		default:
