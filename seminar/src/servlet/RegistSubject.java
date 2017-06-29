@@ -66,7 +66,7 @@ public class RegistSubject extends HttpServlet {
 				   day.equals("")){
 					throw new Exception();
 				}
-				
+
 				//科目登録
 				subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
 			} catch (Exception e) {
@@ -128,6 +128,7 @@ public class RegistSubject extends HttpServlet {
 
 				ArrayList<Student> attendStudentList = new ArrayList<Student>();
 				int listSubjectId = Integer.parseInt(request.getParameter("list_subject_id"));
+				System.out.println(listSubjectId);
 				StudentDAO studentDAO = new StudentDAO();
 
 				//受講者リストの取得
