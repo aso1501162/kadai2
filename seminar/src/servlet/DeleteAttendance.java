@@ -15,16 +15,12 @@ import dao.SubjectDAO;
 import model.Student;
 import model.Subject;
 
-@WebServlet("/AttendSubject")
-public class AttendSubject extends HttpServlet {
+@WebServlet("/DeleteAttendance")
+public class DeleteAttendance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	
 		//遷移先の宣言
 		String path="";
 
@@ -36,24 +32,17 @@ public class AttendSubject extends HttpServlet {
 		//インスタンス化
 		SubjectDAO subjectDAO = new SubjectDAO();
 
-		//申込の処理
+		//削除の処理
 		try{
+			//科目の取得
+			int deleteAttendSubjectId = Integer.parseInt(request.getParameter("id"));
+
+			//科目の削除
+			subjectDAO.deleteAttendSubject(studentId,deleteAttendSubjectId);
 			
-			if (request.getParameter("tue") != null) {
-				int tueSubjectId = Integer.parseInt(request.getParameter("tue"));
-				//科目登録
-				subjectDAO.insertAttendSubject(studentId,tueSubjectId);
-			}
-			
-			if (request.getParameter("thu") != null) {
-				int thuSubjectId = Integer.parseInt(request.getParameter("thu"));
-				//科目登録
-				subjectDAO.insertAttendSubject(studentId,thuSubjectId);
-			}
-			
-			request.setAttribute("message","科目を申し込みました。" );
+			request.setAttribute("message","申込科目を削除しました。" );
 		} catch (Exception e) {
-			request.setAttribute("message","科目の申込に失敗しました。" );
+			request.setAttribute("message","申込科目の削除に失敗しました。" );
 		}
 		
 		//受講科目Listの宣言
@@ -62,22 +51,27 @@ public class AttendSubject extends HttpServlet {
 		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();
 
-		attendSubjectList = subjectDAO.getAttendSubjectList(student.getStudentId());
+		attendSubjectList = subjectDAO.getAttendSubjectList(studentId);
 		tuesdaySubjectList = subjectDAO.getTuesdaySubjectList();
 		thursdaySubjectList = subjectDAO.getThursdaySubjectList();
-
+	
 		if(attendSubjectList.size()<2){
 			request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
 		}
-
+	
 		//受講科目List、全科目Listのデータセット
 		request.setAttribute("attendSubjectList", attendSubjectList);
 		request.setAttribute("tuesdaySubjectList", tuesdaySubjectList);
 		request.setAttribute("thursdaySubjectList", thursdaySubjectList);
 
+		//遷移先の宣言
 		path = "WEB-INF/jsp/StudentRegister.jsp";
 
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 }

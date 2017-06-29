@@ -44,8 +44,9 @@ public class StudentDAO {
 		}
 	}
 
-	// 学生の取得
+	// 学生取得
 	public Student getStudent(String studentId, String password) {
+		System.out.println("---------------学生取得---------------");
 		Student student = new Student();
 
 		try {
@@ -78,7 +79,6 @@ public class StudentDAO {
 
 		} catch (Exception e) {
 			System.out.println(e);
-			// ログイン失敗
 			student = null;
 		} finally {
 			try {
@@ -92,9 +92,7 @@ public class StudentDAO {
 	
 	//	申込学生リスト取得
 	public ArrayList<Student> getAttendStudentList(int subjectId) throws Exception {
-		
-		System.out.println("リストDAOきた");
-		
+		System.out.println("---------------申込学生リスト取得---------------");
 		ArrayList<Student> attendSubjectList = new ArrayList<Student>();
 		
 		try {
@@ -107,20 +105,18 @@ public class StudentDAO {
 					+ "FROM student "
 					+ "INNER JOIN class "
 					+ "ON student.class_id = class.class_id "
-					+ "INNER JOIN attend "
-					+ "ON student.studentid = attend.student_id "
+					+ "INNER JOIN attendance "
+					+ "ON student.student_id = attendance.student_id "
 					+ "WHERE subject_id = ? "
 					+ "ORDER BY student.student_id";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, subjectId);
 			rs = stmt.executeQuery(); // sql文を実行
 			
-			System.out.println("---------------------------------");
-			
 			while (rs.next()) {
 				Student student = new Student();
 				
-				System.out.println("科目ID： " + subjectId + "の申込学生："+rs.getString("student_name") + "を取得");
+				System.out.println("科目ID：" + subjectId + " の申込学生："+rs.getString("student_name") + " を取得");
 
 				student.setStudentId(rs.getInt("student_id"));
 				student.setStudentName(rs.getString("student_name"));

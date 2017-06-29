@@ -44,9 +44,9 @@ public class CategoryDAO {
 		}
 	}
 	
-	// 科目分類リストの取得
-public ArrayList<Category> getCategoryList() {
-		
+	// 科目分類リスト取得
+	public ArrayList<Category> getCategoryList() {
+		System.out.println("---------------科目分類リスト取得---------------");
 		ArrayList<Category> categoryList = new ArrayList<Category>();
 		
 		try {
@@ -61,12 +61,10 @@ public ArrayList<Category> getCategoryList() {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			
-			System.out.println("---------------------------------");
-			
 			while (rs.next()) {
 				Category category = new Category();
 				
-				System.out.println("科目分類："+rs.getString("category_name") + "を取得");
+				System.out.println("科目分類："+rs.getString("category_name") + " を取得");
 
 				category.setCategoryId(rs.getInt("category_id"));
 				category.setCategoryName(rs.getString("category_name"));

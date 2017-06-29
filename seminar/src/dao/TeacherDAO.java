@@ -44,9 +44,9 @@ public class TeacherDAO {
 		}
 	}
 	
-	// 管理者リストの取得
-public ArrayList<Teacher> getTeacherList() {
-		
+	// 教師リスト取得
+	public ArrayList<Teacher> getTeacherList() {
+		System.out.println("---------------教師リスト取得---------------");
 		ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
 		
 		try {
@@ -61,12 +61,10 @@ public ArrayList<Teacher> getTeacherList() {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			
-			System.out.println("---------------------------------");
-			
 			while (rs.next()) {
 				Teacher teacher = new Teacher();
 				
-				System.out.println("教師："+rs.getString("teacher_name") + "を取得");
+				System.out.println("教師："+rs.getString("teacher_name") + " を取得");
 
 				teacher.setTeacherId(rs.getInt("teacher_id"));
 				teacher.setTeacherName(rs.getString("teacher_name"));
@@ -86,8 +84,9 @@ public ArrayList<Teacher> getTeacherList() {
 		return teacherList;
 	}
 	
-	// 管理者の取得
+	// 管理者取得
 	public Teacher getTeacher(String teacherId, String password) {
+		System.out.println("---------------管理者取得---------------");
 		Teacher teacher = new Teacher();
 
 		try {
@@ -112,7 +111,6 @@ public ArrayList<Teacher> getTeacherList() {
 
 		} catch (Exception e) {
 			System.out.println(e);
-			// ログイン失敗
 			teacher = null;
 		} finally {
 			try {

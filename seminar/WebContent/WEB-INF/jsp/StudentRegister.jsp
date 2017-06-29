@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,7 @@
 	<div class="text">
 
 		<h4>申込済み</h4>
-		<form method="post" action="AttendSubject">
+		
 			<table class="table table-bordered">
 				<tr class="active">
 					<th width="10%">曜日</th>
@@ -30,14 +29,14 @@
 				</tr>
 
 
-				<c:if test="${ attendSubjectList != null}">
+				<c:if test="${attendSubjectList != null}">
 					<c:forEach var="attend" items="${attendSubjectList}">
 						<tr>
 							<td><c:out value="${attend.day}" /></td>
 							<td><c:out value="${attend.categoryName}" /></td>
 							<td><c:out value="${attend.subjectName}" /></td>
 							<td><c:out value="${attend.teacherName}" /></td>
-							<td><button type="submit" name="action" value="delete" class="btn btn-default"><input type="hidden" value="<c:out value="${attend.subjectId}" />" name="delete_attend_subject_id">削除</button></td>
+							<td><button class="btn btn-default" onclick="location.href='DeleteAttendance?id=<c:out value="${attend.subjectId}" />'" >削除</button></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -46,6 +45,8 @@
 			<br>
 
 			<h4>科目一覧</h4>
+			
+			<form method="post" action="AttendSubject">
 
 			<h5>火 曜</h5>
 			<table class="table table-bordered">
@@ -93,7 +94,7 @@
 
 
 			<p class="right">
-				<button type="submit" name="action" value="insert" class="btn btn-default">確定</button>
+				<button type="submit" class="btn btn-default">確定</button>
 			</p>
 		</form>
 

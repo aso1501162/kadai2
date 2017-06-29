@@ -1,6 +1,6 @@
-﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="/jsp/common.jsp"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,14 +19,8 @@
 	<jsp:include page="header.jsp" />
 	<br>
 
-		<div class="col-sm-12 text-danger text-center">
-		<c:out value="${insertRegistErrorMessage}" />
-	</div>
 	<div class="col-sm-12 text-danger text-center">
-		<c:out value="${deleteRegistErrorMessage}" />
-	</div>
-	<div class="col-sm-12 text-danger text-center">
-		<c:out value="${listRegistErrorMessage}" />
+		<c:out value="${message}" />
 	</div>
 
 	<div class="text">
@@ -87,8 +81,7 @@
 		</dl>
 	</div>
 </div>
-
-
+</form>
 
 <h4>科目一覧</h4>
 <br>
@@ -112,8 +105,8 @@
 			<td><c:out value="${tueSub.categoryName}" /></td>
 			<td><c:out value="${tueSub.subjectName}" /></td>
 			<td><c:out value="${tueSub.teacherName}" /></td>
-			<td><button type="submit" name="action" value="list" class="btn btn-default"><input type="hidden" value="<c:out value="${tueSub.subjectId}" />" name="list_subject_id">一覧</button></td>
-			<td><button type="submit" name="action" value="delete" class="btn btn-default"><input type="hidden" value="<c:out value="${tueSub.subjectId}" />" name="delete_subject_id">削除</button></td>
+			<td><button class="btn btn-default" onclick="location.href='ListAttendance?id=<c:out value="${tueSub.subjectId}" />'" >一覧</button></td>
+			<td><button class="btn btn-default" onclick="location.href='DeleteSubject?id=<c:out value="${tueSub.subjectId}" />'" >削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
@@ -140,12 +133,12 @@
 			<td><c:out value="${thuSub.categoryName}" /></td>
 			<td><c:out value="${thuSub.subjectName}" /></td>
 			<td><c:out value="${thuSub.teacherName}" /></td>
-			<td><button type="submit" name="action" value="list" class="btn btn-default"><input type="hidden" value="<c:out value="${thuSub.subjectId}" />" name="list_subject_id">一覧</button></td>
-			<td><button type="submit" name="action" value="delete" class="btn btn-default"><input type="hidden" value="<c:out value="${thuSub.subjectId}" />" name="delete_subject_id">削除</button></td>
+			<td><button class="btn btn-default" onclick="location.href='ListAttendance?id=<c:out value="${thuSub.subjectId}" />'" >一覧</button></td>
+			<td><button class="btn btn-default" onclick="location.href='DeleteSubject?id=<c:out value="${thuSub.subjectId}" />'" >削除</button></td>
 		</tr>
 	</c:forEach>
 </table>
-	</form>
+
 </div>
 
 

@@ -17,50 +17,35 @@ import model.Category;
 import model.Subject;
 import model.Teacher;
 
-@WebServlet("/RegistSubject")
-public class RegistSubject extends HttpServlet {
+@WebServlet("/DeleteSubject")
+public class DeleteSubject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//遷移先の宣言
 		String path="";
-
+		
 		//DAOのインスタンス化
 		TeacherDAO teacherDAO = new TeacherDAO();
 		CategoryDAO categoryDAO = new CategoryDAO();
 		SubjectDAO subjectDAO = new SubjectDAO();
 
-		//登録の処理
-		System.out.println("登録はじめ");
-		try {
+		//削除の処理
+		System.out.println("削除はじめ");
+		try{
 
-			//科目を取得
-			int subjectId = Integer.parseInt(request.getParameter("subject_id"));
-			String subjectName = request.getParameter("subject_name");
-			int categoryId = Integer.parseInt(request.getParameter("category_id"));
-			String day = request.getParameter("day");
-			int teacherId = Integer.parseInt(request.getParameter("teacher_id"));
-
-			//未入力欄の確認
-			if(subjectName.equals("")||
-			   day.equals("")){
-				throw new Exception();
-			}
-
-			//科目登録
-			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
+			int deleteSubjectId = Integer.parseInt(request.getParameter("id"));
 			
-			request.setAttribute("message","科目を登録しました。" );
+			//科目の削除
+			subjectDAO.deleteSubject(deleteSubjectId);
 			
+			request.setAttribute("message","科目を削除しました。" );
+
 		} catch (Exception e) {
 			System.out.println(e);
 			
-			request.setAttribute("message","入力内容に誤りがあります。" );
+			request.setAttribute("message","科目の削除に失敗しました。" );
 	    }
 		
 		//全科目Listの宣言(火曜、木曜)
@@ -84,9 +69,13 @@ public class RegistSubject extends HttpServlet {
 
 		path="WEB-INF/jsp/TeacherRegister.jsp";
 
-		System.out.println("登録おわり");
-
+		System.out.println("削除おわり");
+		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 }
