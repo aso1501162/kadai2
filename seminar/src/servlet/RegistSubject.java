@@ -22,7 +22,7 @@ public class RegistSubject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,15 +54,15 @@ public class RegistSubject extends HttpServlet {
 
 			//科目登録
 			subjectDAO.insertSubject(subjectId, subjectName, categoryId, day, teacherId);
-			
+
 			request.setAttribute("message","科目を登録しました。" );
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
-			
+
 			request.setAttribute("message","入力内容に誤りがあります。" );
 	    }
-		
+
 		//全科目Listの宣言(火曜、木曜)
 		ArrayList<Subject> tuesdaySubjectList = new ArrayList<Subject>();
 		ArrayList<Subject> thursdaySubjectList = new ArrayList<Subject>();

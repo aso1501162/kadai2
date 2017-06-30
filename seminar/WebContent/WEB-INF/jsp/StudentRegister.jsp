@@ -15,10 +15,12 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<br>
+	<c:out value="${message}" />
+	<c:out value="${errorMessage}" />
 	<div class="text">
 
 		<h4>申込済み</h4>
-		
+
 			<table class="table table-bordered">
 				<tr class="active">
 					<th width="10%">曜日</th>
@@ -45,7 +47,7 @@
 			<br>
 
 			<h4>科目一覧</h4>
-			
+
 			<form method="post" action="AttendSubject">
 
 			<h5>火 曜</h5>
