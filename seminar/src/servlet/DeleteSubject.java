@@ -32,7 +32,6 @@ public class DeleteSubject extends HttpServlet {
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//削除の処理
-		System.out.println("削除はじめ");
 		try{
 
 			int deleteSubjectId = Integer.parseInt(request.getParameter("id"));
@@ -69,8 +68,6 @@ public class DeleteSubject extends HttpServlet {
 
 		path="WEB-INF/jsp/TeacherRegister.jsp";
 
-		System.out.println("削除おわり");
-		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
 	}

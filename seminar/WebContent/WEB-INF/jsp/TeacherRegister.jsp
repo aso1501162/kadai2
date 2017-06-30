@@ -26,11 +26,10 @@
 	<div class="text">
 
 
-		<h4>科目登録</h4>
-		<div class="subcenter">
+	<h4>科目登録</h4>
 	<form class="form-inline" class="subject" action="RegistSubject" method="post">
-		<div class="subcenter">
-				<div class="form-group">
+		<div class="center">
+			<div class="form-group">
 
 					<!-- 科目ID -->
 					<i class="material-icons md-18">mode_edit</i> <input
@@ -45,7 +44,10 @@
 							<option value="<c:out value="${cat.categoryId}" />"><c:out value="${cat.categoryName}" /></option>
 						</c:forEach>
 					</select>
+		</div>
 		<br>
+		<br>
+		<div class="form-group">
 		<i class="material-icons md-18">mode_edit</i>
 		<!-- 科目名 -->
 		<input name="subject_name" type="text" placeholder="科目名" class="form-control" />
@@ -57,33 +59,33 @@
 				<option value="<c:out value="${tea.teacherId}" />"><c:out value="${tea.teacherName}" /></option>
 			</c:forEach>
 		</select>
-
+		</div>
 		<br>
-
+		<br>
+		<div class="form-group">
 		<i class="material-icons md-18">mode_edit</i>　曜日　
 		<input name="day" type="radio" class="radio" value="火" /> 火曜　
 		<input name="day" type="radio" class="radio" value="木" /> 木曜 <br>
-
-		<div class="text-danger text-center">
-			<c:out value="${registErrorMessage}" />
 		</div>
-
+		<br>
+		<br>
+		<div class="form-group">
 		<dl class="submit">
-		<div class="radio">
+			<div class="radio">
 				<label>
-			<button type="submit" name="action" value="insert" class="btn btn-default">登録</button>
-			</label>
+					<button type="submit" name="action" value="insert" class="btn btn-default">登録</button>
+				</label>
 			</div>
 			<div class="radio">
 				<label>
-			<button type="reset" class="btn btn-default">取消</button>
-			</label>
+					<button type="reset" class="btn btn-default">取消</button>
+				</label>
 			</div>
 		</dl>
+		</div>
+		
 	</div>
-</div>
 </form>
-</div>
 
 <h4>科目一覧</h4>
 <br>

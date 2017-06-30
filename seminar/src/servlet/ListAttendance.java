@@ -29,7 +29,6 @@ public class ListAttendance extends HttpServlet {
 		String path="";
 
 		//リストの処理
-		System.out.println("リストはじめ");
 		try{
 			int listSubjectId = Integer.parseInt(request.getParameter("id"));
 			
@@ -80,7 +79,6 @@ public class ListAttendance extends HttpServlet {
 			//遷移先の宣言
 			path = "WEB-INF/jsp/TeacherRegister.jsp";
 	    }
-		System.out.println("リストおわり");
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);

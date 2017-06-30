@@ -36,7 +36,6 @@ public class RegistSubject extends HttpServlet {
 		SubjectDAO subjectDAO = new SubjectDAO();
 
 		//登録の処理
-		System.out.println("登録はじめ");
 		try {
 
 			//科目を取得
@@ -83,8 +82,6 @@ public class RegistSubject extends HttpServlet {
 		request.setAttribute("categoryList", categoryList);
 
 		path="WEB-INF/jsp/TeacherRegister.jsp";
-
-		System.out.println("登録おわり");
 
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
