@@ -2,8 +2,7 @@
 	font-size: 15px;
 	color: #292F33;
 	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN',Meiryo,メイリオ,'YuGothic','游ゴシック',Helvetica,Arial,sans-serif;
-
-}
+	}
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
@@ -98,6 +97,7 @@ h2{
 	margin: 40px auto 0 auto;
 	width: 60%;
 	line-height: 4em
+	padding-bottom: 40px;
 }
 
 .list{

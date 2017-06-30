@@ -20,10 +20,15 @@
 			<div class="listname">
 				<c:out value="${listSubject.subjectName}" />
 			</div>
-			ID：<c:out value="${listSubject.subjectId}" /><br>	
-			分類：<c:out value="${listSubject.categoryName}" /><br>	
-			曜日：<c:out value="${listSubject.day}" /><br>	
-			教師：<c:out value="${listSubject.teacherName}" /><br>	
+			<table style="width: 100%" class="table table-bordered">
+				<tr>
+					<td>ID：<c:out value="${listSubject.subjectId}" /></td>
+					<td>分類：<c:out value="${listSubject.categoryName}" /></td>
+					<td>曜日：<c:out value="${listSubject.day}" /></td>
+					<td>教師：<c:out value="${listSubject.teacherName}" /></td>
+				</tr>
+		</table>
+		<br>
 			<div class="text-right"><c:out value="${attendStudentList.size()}" />人</div>
 
 			<br>

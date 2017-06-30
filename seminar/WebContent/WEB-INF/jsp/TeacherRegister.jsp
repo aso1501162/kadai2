@@ -27,6 +27,7 @@
 
 
 		<h4>科目登録</h4>
+		<div class="subcenter">
 	<form class="form-inline" class="subject" action="RegistSubject" method="post">
 		<div class="subcenter">
 				<div class="form-group">
@@ -82,6 +83,7 @@
 	</div>
 </div>
 </form>
+</div>
 
 <h4>科目一覧</h4>
 <br>
@@ -140,7 +142,7 @@
 </table>
 
 </div>
-
+<br>
 
 </body>
 </html>
