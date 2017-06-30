@@ -382,9 +382,6 @@ public class SubjectDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, subjectId);
-			
-			System.out.println("delete");
-			
 			stmt.executeUpdate();
 			
 			System.out.println("学生ID：" + studentId +  " の申込科目ID："+ subjectId + " を削除");

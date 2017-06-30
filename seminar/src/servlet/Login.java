@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
 				thursdaySubjectList = subjectDAO.getThursdaySubjectList();
 
 				if(attendSubjectList.size()<2){
-					request.setAttribute("attendErrorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
+					request.setAttribute("errorMessage", "火曜日と木曜日からそれぞれ１科目申し込んでください。");
 				}
 
 			//生徒名、受講科目List、全科目Listのデータセット

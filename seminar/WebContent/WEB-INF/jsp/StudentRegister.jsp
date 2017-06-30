@@ -15,8 +15,13 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<br>
-	<c:out value="${message}" />
-	<c:out value="${errorMessage}" />
+	
+	<div class="text-danger text-center"><c:out value="${message}" /></div>
+	
+	<br>
+	
+	<div class="text-danger text-center"><c:out value="${errorMessage}" /></div>
+	
 	<div class="text">
 
 		<h4>申込済み</h4>
