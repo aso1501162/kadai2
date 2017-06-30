@@ -42,7 +42,7 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<button class="btn btn-default" onclick="ljavascript:window.print();" >印刷</button>
+				<button class="btn btn-default" onclick="javascript:window.print();" >印刷</button>
 	</div>
 </body>
 
