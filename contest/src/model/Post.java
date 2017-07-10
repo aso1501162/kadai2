@@ -9,6 +9,7 @@ public class Post implements Serializable{
 	private String fileName;
 	private String title;
 	private ArrayList<String> commentList;
+	private int votes;
 
 	public Post(){}
 
@@ -28,6 +29,10 @@ public class Post implements Serializable{
 		return commentList;
 	}
 
+	public int getVotes() {
+		return votes;
+	}
+
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
@@ -44,5 +49,8 @@ public class Post implements Serializable{
 		this.commentList = commentList;
 	}
 
+	public void setVotes(int votes) {
+		this.votes = votes;
+	}
 
 }
