@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Post implements Serializable{
 
 	private int postId;
-	private String postName;
+	private String fileName;
 	private String title;
 	private ArrayList<String> commentList;
 
@@ -16,8 +16,8 @@ public class Post implements Serializable{
 		return postId;
 	}
 
-	public String getPostName() {
-		return postName;
+	public String getFileName() {
+		return fileName;
 	}
 
 	public String getTitle() {
@@ -32,8 +32,8 @@ public class Post implements Serializable{
 		this.postId = postId;
 	}
 
-	public void setPostName(String postName) {
-		this.postName = postName;
+	public void setFileName(String postName) {
+		this.fileName = postName;
 	}
 
 	public void setTitle(String title) {
