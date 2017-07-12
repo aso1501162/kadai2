@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Post;
-/**
- * Servlet implementation class VotePage
- */
+
 @WebServlet("/VotePage")
 public class VotePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,7 +21,9 @@ public class VotePage extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//投票画面表示
-		ArrayList<Post> postList = new ArrayList<Post>();
+		ArrayList<Post> getPostList = new ArrayList<Post>();
+
+
 	}
 
 }
