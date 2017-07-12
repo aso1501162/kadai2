@@ -1,12 +1,12 @@
 package dao;
 
 public class VoteDAO extends CommonDAO {
-	
+
 	//	投票数取得
 	public int getVotes(int postId) {
 		System.out.println("---------------投票数取得---------------");
 		int votes = 0;
-		
+
 		try {
 			// DB接続
 			connection();
@@ -20,11 +20,11 @@ public class VoteDAO extends CommonDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, postId);
 			rs = stmt.executeQuery(); // sql文を実行
-			
+
 			System.out.println("投票数：" + rs.getInt("votes") + " を取得");
-			
+
 			votes = rs.getInt("votes");
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
@@ -36,7 +36,7 @@ public class VoteDAO extends CommonDAO {
 		}
 		return votes;
 	}
-	
+
 	//	投票学生の重複チェック
 	public boolean checkStudentId(String studentId) {
 		System.out.println("---------------投票学生の重複チェック---------------");
@@ -53,9 +53,9 @@ public class VoteDAO extends CommonDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, studentId);
 			rs = stmt.executeQuery(); // sql文を実行
-			
+
 			return rs.next();
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			return false;
