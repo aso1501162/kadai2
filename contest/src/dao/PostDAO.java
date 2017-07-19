@@ -31,8 +31,8 @@ public class PostDAO extends CommonDAO {
 				post.setPostId(rs.getInt("post_id"));
 				post.setFileName(rs.getString("file_name"));
 				post.setTitle(rs.getString("title"));
-				post.setCommentList(getCommentList(rs.getInt("post_id")));
-				post.setVotes(getVotes(rs.getInt("post_id")));
+				post.setCommentList(new CommentDAO().getCommentList(rs.getInt("post_id")));
+				post.setVotes(new VoteDAO().getVotes(rs.getInt("post_id")));
 
 				postList.add(post);
 			}
