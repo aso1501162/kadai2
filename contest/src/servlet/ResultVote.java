@@ -13,29 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 import dao.PostDAO;
 import model.Post;
 
-@WebServlet("/VotePage")
-public class VotePage extends HttpServlet {
+@WebServlet("/ResultVote")
+public class ResultVote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//投票画面を表示するためのサーブレット
+		//結果画面表示のサーブレット
 
-		String path = "";
-
-		//投票画面表示
-		ArrayList<Post> getPostList = new ArrayList<Post>();
+		ArrayList<Integer> getPostId = new ArrayList<Integer>();
+		ArrayList<Post> arrayPost = new ArrayList<Post>();
 
 		//インスタンス化
 		PostDAO postDAO = new PostDAO();
-		getPostList = postDAO.getPostList();
+		Post post = new Post();
 
-		//投稿作品情報のセット
-		request.setAttribute("getPostList", getPostList);
+		//DAOから上位3位のpostIdを取得
+		getPostId = xxDAO.xxxxxx();
 
-		RequestDispatcher rd = request.getRequestDispatcher(path);
+		//DAOから上位3作品の情報を取得
+		for(int postId : getPostId){
+		post = postDAO.getPost(postId);
+		arrayPost.add(post);
+		}
+
+		request.setAttribute("arrayPost", arrayPost);
+
+		RequestDispatcher rd = request.getRequestDispatcher(xxxxx);
 		rd.forward(request,response);
 	}
 
