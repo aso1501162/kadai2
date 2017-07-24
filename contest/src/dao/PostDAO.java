@@ -24,13 +24,13 @@ public class PostDAO extends CommonDAO {
 			stmt.setInt(1, postId);
 			rs = stmt.executeQuery(); // sql文を実行
 			
-				System.out.println("投稿：" + rs.getString("title") + " を取得");
+			System.out.println("投稿：" + rs.getString("title") + " を取得");
 
-				post.setPostId(rs.getInt("post_id"));
-				post.setFileName(rs.getString("file_name"));
-				post.setTitle(rs.getString("title"));
-				post.setCommentList(new CommentDAO().getCommentList(rs.getInt("post_id")));
-				post.setVotes(new VoteDAO().getVotes(rs.getInt("post_id")));
+			post.setPostId(rs.getInt("post_id"));
+			post.setFileName(rs.getString("file_name"));
+			post.setTitle(rs.getString("title"));
+			post.setCommentList(new CommentDAO().getCommentList(rs.getInt("post_id")));
+			post.setVotes(new VoteDAO().getVotes(rs.getInt("post_id")));
 
 		} catch (Exception e) {
 			System.out.println(e);
