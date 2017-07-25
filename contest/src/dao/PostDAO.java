@@ -24,6 +24,8 @@ public class PostDAO extends CommonDAO {
 			stmt.setInt(1, postId);
 			rs = stmt.executeQuery(); // sql文を実行
 			
+			rs.next();
+			
 			System.out.println("投稿：" + rs.getString("title") + " を取得");
 
 			post.setPostId(rs.getInt("post_id"));
@@ -59,6 +61,7 @@ public class PostDAO extends CommonDAO {
 					+ "FROM post";
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
+			
 			
 			while (rs.next()) {
 				Post post = new Post();
