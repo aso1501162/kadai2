@@ -63,14 +63,44 @@ public class PostDAO extends CommonDAO {
 			while (rs.next()) {
 				Post post = new Post();
 				
-				System.out.println("投稿：" + rs.getString("title") + " を取得");
+				getPost(rs.getInt("post_id"));
+				
+				postList.add(post);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
 
-				post.setPostId(rs.getInt("post_id"));
-				post.setFileName(rs.getString("file_name"));
-				post.setTitle(rs.getString("title"));
-				post.setCommentList(new CommentDAO().getCommentList(rs.getInt("post_id")));
-				post.setVotes(new VoteDAO().getVotes(rs.getInt("post_id")));
+			}
+		}
+		return postList;
+	}
+	
+	//	投票数上位の投稿取得
+	public ArrayList<Post> getTopPostList(int num) {
+		System.out.println("---------------投票数上位の投稿取得---------------");
+		ArrayList<Post> postList = new ArrayList<Post>();
+		
+		try {
+			// DB接続
+			connection();
 
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT * "
+					+ "FROM post"
+					+ "ORDER BY ";
+			stmt = con.prepareStatement(sql);
+			rs = stmt.executeQuery(); // sql文を実行
+			
+			while (rs.next()) {
+				Post post = new Post();
+				
+				getPost(rs.getInt("post_id"));
+				
 				postList.add(post);
 			}
 		} catch (Exception e) {
