@@ -25,7 +25,7 @@
 <c:forEach var="post" items="${postList}">
 	<div id="<c:out value="${post.postId}" />" class="photoframe">
  <p class="photo"><img src="img/post/<c:out value="${post.postId}" />/thumbnail/<c:out value="${post.fileName}" />"/></p>
-  <c:out value="${post.title}" />"　<br>
+  <c:out value="${post.title}" /><br>
   	<p class="inl">
   	<span class="inl-1"><img alt="" src="img/vote.png" /></span>
 	<span class="inl-2"><a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></span>
