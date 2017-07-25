@@ -89,26 +89,23 @@ public class PostDAO extends CommonDAO {
 	//	投票数上位の投稿取得
 	public ArrayList<Post> getTopPostList(int num) {
 		System.out.println("---------------投票数上位の投稿取得---------------");
-		ArrayList<Post> postList = new ArrayList<Post>();
+		ArrayList<Post> topPostList = new ArrayList<Post>();
 		
 		try {
 			// DB接続
 			connection();
 
-			// SQL文設定の準備・SQL文の実行
-			String sql =
-					"SELECT * "
-					+ "FROM post"
-					+ "ORDER BY ";
-			stmt = con.prepareStatement(sql);
-			rs = stmt.executeQuery(); // sql文を実行
+			ArrayList<Integer> topPostIdList = new ArrayList<Integer>();
 			
-			while (rs.next()) {
+			VoteDAO voteDAO = new VoteDAO();
+			topPostIdList = voteDAO.getTopPostIdList(num);
+			
+			for (int postId :topPostIdList) {
 				Post post = new Post();
 				
-				getPost(rs.getInt("post_id"));
+				post = getPost(postId);
 				
-				postList.add(post);
+				topPostList.add(post);
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -119,7 +116,7 @@ public class PostDAO extends CommonDAO {
 
 			}
 		}
-		return postList;
+		return topPostList;
 	}
 	
 }

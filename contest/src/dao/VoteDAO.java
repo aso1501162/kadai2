@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 public class VoteDAO extends CommonDAO {
 	
 	//	投票追加
@@ -98,5 +100,41 @@ public class VoteDAO extends CommonDAO {
 
 			}
 		}
+	}
+	
+	//	投票数上位の投稿取得
+	public ArrayList<Integer> getTopPostIdList(int num) {
+		System.out.println("---------------投票数上位の投稿ID取得---------------");
+		ArrayList<Integer> topPostIdList = new ArrayList<Integer>();
+		
+		try {
+			// DB接続
+			connection();
+
+			// SQL文設定の準備・SQL文の実行
+			String sql =
+					"SELECT post_id, COUNT(*) "
+					+ "FROM vote "
+					+ "INNER JOIN vote "
+					+ "GROUP BY post_id "
+					+ "ORDER BY COUNT(*) "
+					+ "LIMIT ?";
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, num);
+			rs = stmt.executeQuery(); // sql文を実行
+			
+			while (rs.next()) {
+				topPostIdList.add(rs.getInt("post_id"));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try {
+				close();
+			} catch (Exception e) {
+
+			}
+		}
+		return topPostIdList;
 	}
 }

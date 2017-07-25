@@ -2,35 +2,43 @@
 	font-size: 15px;
 	color: #292F33;
 	font-family: 'Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN',Meiryo,メイリオ,'YuGothic','游ゴシック',Helvetica,Arial,sans-serif;
+	margin:0;
+	background-image: url('img/p0141_l.png');
+	background-repeat: repeat;
 
 }
 
 
 /* ナビゲーションバー */
 #header {
-width: 100%;
-height: 300px;
-padding: 0;
-margin: 0;
-background: url('img/DSC00412h.jpg') repeat-x center top;
-border-bottom:1px solid #fff;
+	width: 100%;
+	height: 350px;
+	padding: 0px;
+	margin: 0;
+	background: url('img/background.jpg');
+	-moz-background-size:cover;
+	background-size:cover;
+	border-bottom: 0px solid #fff;
 }
-#nmenu {
-width:940px;
-margin:0px auto;
+#header img{
+	margin-top: 320px;
+	margin-right: 0;
+	margin-left: 20px;
 }
 
 /* 記事 */
 .tb {
-	width: 70%;
-	height: 1500px;
-	background: url('img/p0141_l.png');
-	margin-left:auto;
-	margin-right:auto;
-	}
+	width: 100%;
+	height: 1900px;
+}
 	
 .tb-inn {
-	padding: 50px;
+	margin: 50px auto 40px auto;
+	border-radius: 20px / 18px;
+	padding-top: 50px;
+	width: 62%;
+	height: 1800px;
+	background-color: #ffffff;
 }
 
 /* 画像装飾 */
@@ -40,9 +48,9 @@ margin:0px auto;
   display: inline;
   float: left;
   width: 220px;
-  height: 270px;
+  height: 330px;
   overflow: hidden;
-  margin: 0 20px 60px;
+  margin: 20px 20px 60px;
   padding: 15px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -57,7 +65,7 @@ margin:0px auto;
 }
 .photoframe .photo {
   width: 220px;
-  height: 220px;
+  height: 200px;
   overflow: hidden;
   margin: 0 0 15px;
   padding: 0;
@@ -65,10 +73,109 @@ margin:0px auto;
   -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
 }
-.photoframe img {
+.photo img {
   position: relative;
   display: block;
   margin: 0;
   padding: 0;
-  z-index: -1;
+  z-index: 2;
+}
+/* #photo02 {
+  -moz-transform: rotate(-1deg);
+  -webkit-transform: rotate(-1deg);
+}
+*/
+
+
+
+.inl {
+	width: 200px;
+	text-align:center;
+}
+.inl-1,inl-2{
+	width: 100px;
+    float: left;
+    vertical-align:bottom;
+    z-index: 3;
+    
+}
+
+.title2 {
+	margin: 10px auto 20px auto;
+	display:block;
+}
+
+
+/*結果ページ*/
+.title {
+	text-align: center;
+	vertical-align:middle;
+	display:inline-block;
+	float:left;
+	font-size:17px;
+	margin: 0 auto;
+	width:400px;
+}
+.coupon {
+	text-align: right;
+}
+.evaluate{
+	width: 400px;
+	display:inline-block;
+  	float: left;
+  	margin:0 auto;
+  	
+}
+figure {
+	float: left;
+}
+
+.clear{
+	clear:both;
+}
+.prize{
+	vertical-align: middle;
+	display:inline-block;
+	float:left;
+	margin: 0 auto;
+	width:300px;
+
+}
+
+.tb_l {
+	width: 100%;
+	height: 1400px;
+}
+	
+.tb-linn {
+	margin: 50px auto 40px auto;
+	border-radius: 20px / 18px;
+	padding-top: 50px;
+	width: 62%;
+	height: 1300px;
+	background-color: #ffffff;
+}
+
+table {
+	margin:0 auto;
+}
+
+.comments {
+    background: -webkit-repeating-linear-gradient(-45deg, #f5edfd, #f5edfd 5px, #fdfcff 5px, #fdfcff 10px);
+    background: repeating-linear-gradient(-45deg, #f5edfd, #f5edfd 5px, #fdfcff 5px, #fdfcff 10px);
+    color: #4a1086;
+    margin: 0.5em 0;
+    padding: 2em;
+    height:100px;
+}
+.photo {
+	padding: 8px;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #c2c2c2;
+	border-right: 1px solid #c2c2c2;
+	/* IE */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#cccccc,direction=135,strength=3,enabled=true)";
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#cccccc,direction=135,strength=3,enabled=true); /* IE5.5+ */
+	background: #fff;
 }
