@@ -23,25 +23,20 @@ public class ResultVote extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//結果画面表示のサーブレット
 
-		ArrayList<Integer> getPostId = new ArrayList<Integer>();
-		ArrayList<Post> arrayPost = new ArrayList<Post>();
+		String path = "";
+		int num = 3;
+
+		//投票画面表示
+		ArrayList<Post> getPostList = new ArrayList<Post>();
 
 		//インスタンス化
 		PostDAO postDAO = new PostDAO();
-		Post post = new Post();
+		getPostList = postDAO.getTopPostList(num);
 
-		//DAOから上位3位のpostIdを取得
-		getPostId = xxDAO.xxxxxx();
+		//投稿作品情報のセット
+		request.setAttribute("getPostList", getPostList);
 
-		//DAOから上位3作品の情報を取得
-		for(int postId : getPostId){
-		post = postDAO.getPost(postId);
-		arrayPost.add(post);
-		}
-
-		request.setAttribute("arrayPost", arrayPost);
-
-		RequestDispatcher rd = request.getRequestDispatcher(xxxxx);
+		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
 	}
 

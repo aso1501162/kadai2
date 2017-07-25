@@ -23,6 +23,7 @@ public class Vote extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//投票のためのサーブレット
+		System.out.println("Vote");
 		String path = "";
 
 		//jspから値の受け取り
