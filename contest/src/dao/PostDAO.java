@@ -62,11 +62,15 @@ public class PostDAO extends CommonDAO {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery(); // sql文を実行
 			
-			
+			ArrayList<Integer> postIdList = new ArrayList<Integer>();
 			while (rs.next()) {
+				postIdList.add(rs.getInt("post_id"));
+			}
+			
+			for (int postId : postIdList) {
 				Post post = new Post();
 				
-				getPost(rs.getInt("post_id"));
+				post = getPost(postId);
 				
 				postList.add(post);
 			}
