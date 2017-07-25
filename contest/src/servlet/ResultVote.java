@@ -18,9 +18,6 @@ public class ResultVote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//結果画面表示のサーブレット
 
 		String path = "";
@@ -38,6 +35,10 @@ public class ResultVote extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 
 }
