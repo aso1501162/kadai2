@@ -117,7 +117,7 @@ public class VoteDAO extends CommonDAO {
 					+ "FROM vote "
 					+ "INNER JOIN vote "
 					+ "GROUP BY post_id "
-					+ "ORDER BY COUNT(*) "
+					+ "ORDER BY COUNT(*)　DESC "
 					+ "LIMIT ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, num);
