@@ -50,6 +50,8 @@ public class VoteDAO extends CommonDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, postId);
 			rs = stmt.executeQuery(); // sql文を実行
+			
+			rs.next();
 
 			System.out.println("投票数：" + rs.getInt("votes") + " を取得");
 
