@@ -18,68 +18,40 @@
 	<img alt="" height="70" src="img/title.png" width="350" /></div>
 
 <br>
-	<div class="tb_l">
-		<div class="tb-linn">
-		<img alt="" height="46" src="img/kekka.jpg" width="225" class="title2"><br>
+  <div class="tb_l">
+    <div class="tb-linn">
+      <img alt="" height="46" src="img/kekka.jpg" width="225" class="title2"><br>
 
-			<table style="width: 45%">
-				<tr>
-					<td style="width: 100px"><img alt="" src="img/01b.jpg"></td>
-					<td>タイトル</td>
-				</tr>
-			</table>
+        <br class="clear"><br>
+          <% int rankNum = 1;%>
+          <c:forEach var="rankPost" items="${rankPostList}">
+            <br class="clear"><br>
 
-			<br class="clear">
-			<figure>
-				<img alt="" height="200" src="img/post/2/fuji2.JPG" width="300" class="photo">
-			</figure>
-		<div class="evaluate">
-			<p class="coupon">得票数</p>
-			<p class="comments">コメント</p>
-		</div>
+            <table style="width: 45%">
+              <tr>
+                <td style="width: 100px"><img alt="" src="img/0<%= rankNum %>b.jpg"></td>
+                <% rankNum = rankNum++;%>
+                <td><c:out value="${rankPost.title }" /></td>
+              </tr>
+            </table>
 
-		<br class="clear"><br>
-			<table style="width: 45%">
-				<tr>
-					<td style="width: 100px"><img alt="" src="img/02b.jpg"></td>
-					<td>タイトル</td>
-				</tr>
-			</table>
-			<br class="clear">
+            <br class="clear">
 
-		<figure>
-			<img alt="" height="200" src="img/post/7/hot.jpg" width="300" class="photo">
-		</figure>
-		<div class="evaluate">
-			<p class="coupon">得票数</p>
-			<p class="comments">コメント</p>
+            <figure>
+              <img alt="" height="200" src="img/post/<c:out value="${rankPost.postId}" />/thumbnail/<c:out value="${rankPost.fileName}" />" width="300" class="photo">
+            </figure>
 
-			</div>
-		<br class="clear"><br>
-			<table style="width: 45%">
-				<tr>
-					<td style="width: 100px"><img alt="" src="img/03b.jpg"></td>
-					<td>タイトル</td>
-				</tr>
-			</table>
+            <div class="evaluate">
+              <p class="coupon"><c:out value="${rankPost.votes }" /></p>
+                <c:forEach var="comment" items="${rankPost }">
+                  <p class="comments"><c:out value="${comment.commentList }" /></p>
+                </c:forEach>
+            </div>
 
-			<br class="clear">
+            <br class="clear"><br>
 
-		<figure>
-			<img alt="" height="200" src="img/post/9/cat3.jpg" width="300" class="photo">
-		</figure>
-		<div class="evaluate">
-			<p class="coupon">得票数</p>
-			<p class="comments">コメント</p>
+          </c:forEach>
 
-			</div>
-		</div>
-		<br class="clear">
-
-
-	</div>
-
-
+    </div>
 </body>
-
 </html>

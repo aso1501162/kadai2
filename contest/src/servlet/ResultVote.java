@@ -20,18 +20,18 @@ public class ResultVote extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//結果画面表示のサーブレット
 
-		String path = "";
+		String path = "WEB-INF/jsp/index.jsp";
 		int num = 3;
 
 		//投票画面表示
-		ArrayList<Post> getPostList = new ArrayList<Post>();
+		ArrayList<Post> rankPostList = new ArrayList<Post>();
 
 		//インスタンス化
 		PostDAO postDAO = new PostDAO();
-		getPostList = postDAO.getTopPostList(num);
+		rankPostList = postDAO.getTopPostList(num);
 
 		//投稿作品情報のセット
-		request.setAttribute("getPostList", getPostList);
+		request.setAttribute("rankPostList", rankPostList);
 
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request,response);
