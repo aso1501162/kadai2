@@ -115,7 +115,6 @@ public class VoteDAO extends CommonDAO {
 			String sql =
 					"SELECT post_id, COUNT(*) "
 					+ "FROM vote "
-					+ "INNER JOIN vote "
 					+ "GROUP BY post_id "
 					+ "ORDER BY COUNT(*)　DESC "
 					+ "LIMIT ?";
