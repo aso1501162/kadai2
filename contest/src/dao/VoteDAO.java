@@ -116,13 +116,14 @@ public class VoteDAO extends CommonDAO {
 					"SELECT post_id, COUNT(*) "
 					+ "FROM vote "
 					+ "GROUP BY post_id "
-					+ "ORDER BY COUNT(*)　DESC "
+					+ "ORDER BY COUNT(*) DESC "
 					+ "LIMIT ?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, num);
 			rs = stmt.executeQuery(); // sql文を実行
 			
 			while (rs.next()) {
+				System.out.println(rs.getInt("post_id"));
 				topPostIdList.add(rs.getInt("post_id"));
 			}
 		} catch (Exception e) {
