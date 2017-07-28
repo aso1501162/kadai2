@@ -1,0 +1,25 @@
+﻿.title {
+	text-align: center;
+}
+.coupon {
+	text-align: right;
+}
+.comments {
+	height: 100px;
+}
+.evaluate{
+	width: 300px;
+	float: left;
+}
+figure {
+	float: left;
+}
+
+.clear{
+	clear:both;
+}
+article {
+	margin: 0px auto 0px auto;
+	background-color: #99CCFF;
+	width: 900px;
+}

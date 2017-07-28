@@ -20,7 +20,7 @@ public class ResultVote extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//結果画面表示のサーブレット
 
-		String path = "WEB-INF/jsp/index.jsp";
+		String path = "result.jsp";
 		int num = 3;
 
 		//投票画面表示
