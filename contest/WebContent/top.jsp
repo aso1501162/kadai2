@@ -13,9 +13,10 @@
 
 	<!--ここから　投票フォーム-->
 	<div class="modal-content-form center">
-		<form action="##" method="post">
-			学籍番号<input type="text" name="nomber" /><br>
+		<form action="Vote" method="post">
+			学籍番号<input type="text" name="number" /><br>
 			生年月日<input type="text" name="birthday" /><br>
+			<input type="hidden" name="postid" value="<c:out value="${post.postId}" />"/>
 			コメント<textarea name="comment" rows="5" cols="25"></textarea>
 			<p class="center">
 				<button class="modal-close">やめる</button>

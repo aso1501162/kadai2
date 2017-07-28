@@ -27,9 +27,9 @@ public class Vote extends HttpServlet {
 		String path = "";
 
 		//jspから値の受け取り
-		String studentId = request.getParameter("学籍番号");
-		String birthday = request.getParameter("生年月日");
-		int postId = Integer.parseInt(request.getParameter("作品Id"));
+		String studentId = request.getParameter("number");
+		String birthday = request.getParameter("birthday");
+		int postId = Integer.parseInt(request.getParameter("postid"));
 		Boolean checkStudentFlug;
 
 		//インスタンス化
@@ -44,7 +44,7 @@ public class Vote extends HttpServlet {
 			checkVoteFlug = voteDAO.checkStudentId(studentId);
 
 			if(checkVoteFlug){
-				String comment = request.getParameter("コメント");
+				String comment = request.getParameter("comment");
 
 				CommentDAO commentDAO = new CommentDAO();
 				commentDAO.addComment(postId,comment);
